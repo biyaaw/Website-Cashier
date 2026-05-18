@@ -13,8 +13,6 @@ body {
 .app-container {
     display: flex;
     min-height: 100vh;
-}
-
 /* ========= SIDEBAR ========= */
 .sidebar {
     width: 260px;
