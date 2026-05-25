@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Cheseto Restaurant - POS System with Admin Panel</title>
+    <title>Cheseto Restaurant - POS System</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -24,7 +24,7 @@
             min-height: 100vh;
         }
 
-        /* ========= SIDEBAR ========= */
+        /* Sidebar */
         .sidebar {
             width: 260px;
             background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
@@ -45,12 +45,12 @@
             padding: 28px 24px;
             font-size: 22px;
             font-weight: 700;
-            color: #FF6B35;
             border-bottom: 1px solid #334155;
         }
 
         .logo i {
             font-size: 28px;
+            color: #FF6B35;
         }
 
         .logo span {
@@ -129,7 +129,7 @@
             color: #94A3B8;
         }
 
-        /* ========= MAIN CONTENT ========= */
+        /* Main Content */
         .main-content {
             flex: 1;
             margin-left: 260px;
@@ -213,7 +213,7 @@
             box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
         }
 
-        /* POS Layout 2 Kolom */
+        /* POS Layout */
         .pos-layout {
             display: flex;
             gap: 28px;
@@ -462,14 +462,6 @@
             transform: scale(0.98);
         }
 
-        .btn-secondary {
-            background: #64748B;
-        }
-
-        .btn-secondary:hover {
-            background: #475569;
-        }
-
         .toast {
             position: fixed;
             bottom: 30px;
@@ -490,7 +482,7 @@
             opacity: 1;
         }
 
-        /* Modal Styles */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -501,7 +493,6 @@
             height: 100%;
             background-color: rgba(0,0,0,0.5);
             backdrop-filter: blur(4px);
-            animation: fadeIn 0.2s ease;
         }
 
         .modal-content {
@@ -512,7 +503,6 @@
             max-width: 500px;
             border-radius: 28px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            animation: slideIn 0.3s ease;
             max-height: 90vh;
             overflow-y: auto;
         }
@@ -589,7 +579,6 @@
 
         .btn-auth:hover {
             background: #E55A2B;
-            transform: scale(0.98);
         }
 
         .btn-danger {
@@ -614,7 +603,7 @@
             cursor: pointer;
         }
 
-        /* Page content styles */
+        /* Page content */
         .page-content {
             display: none;
         }
@@ -655,13 +644,13 @@
             color: #FF6B35;
         }
 
-        .history-list, .alert-list, .user-list, .menu-admin-list {
+        .history-list, .alert-list, .menu-admin-list {
             background: white;
             border-radius: 20px;
             padding: 20px;
         }
 
-        .history-item, .alert-item, .user-item, .menu-admin-item {
+        .history-item, .alert-item, .menu-admin-item {
             padding: 15px;
             border-bottom: 1px solid #F1F5F9;
             display: flex;
@@ -741,32 +730,6 @@
             color: #1E293B;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Scrollbar */
-        .menu-grid::-webkit-scrollbar, .cart-items::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .menu-grid::-webkit-scrollbar-track {
-            background: #F1F5F9;
-            border-radius: 10px;
-        }
-
-        .menu-grid::-webkit-scrollbar-thumb {
-            background: #CBD5E1;
-            border-radius: 10px;
-        }
-
-        /* Responsive */
         @media (max-width: 1100px) {
             .pos-layout {
                 flex-direction: column;
@@ -792,7 +755,7 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Sidebar Kiri - Navigation -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <i class="fas fa-utensils"></i>
@@ -801,11 +764,7 @@
             <nav class="nav-menu">
                 <a class="nav-item active" data-page="home">
                     <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-                <a class="nav-item" data-page="takeaway">
-                    <i class="fas fa-bag-shopping"></i>
-                    <span>Take Away</span>
+                    <span>Home (POS)</span>
                 </a>
                 <a class="nav-item" data-page="history">
                     <i class="fas fa-clock"></i>
@@ -837,111 +796,90 @@
             </div>
         </aside>
 
-        <!-- Konten Utama -->
+        <!-- Main Content -->
         <main class="main-content">
-            <!-- Home Page -->
+            <!-- Home Page (POS) -->
             <div id="homePage" class="page-content active-page">
                 <div class="search-header">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search category or menu" id="searchInput">
+                        <input type="text" placeholder="Cari menu..." id="searchInput">
                     </div>
                     <div class="stock-warning" id="stockWarningBtn">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <span id="outOfStockCount">0</span> items out of stocks
+                        <span id="outOfStockCount">0</span> menu habis
                     </div>
                 </div>
 
                 <div class="category-tabs" id="categoryTabs">
-                    <button class="cat-tab active" data-cat="all">All</button>
+                    <button class="cat-tab active" data-cat="all">Semua</button>
                     <button class="cat-tab" data-cat="Pizza">Pizza</button>
                     <button class="cat-tab" data-cat="Burger">Burger</button>
                     <button class="cat-tab" data-cat="Rice">Rice</button>
                     <button class="cat-tab" data-cat="Snacks">Snacks</button>
-                    <button class="cat-tab" data-cat="Drinks">Drinks</button>
+                    <button class="cat-tab" data-cat="Drinks">Minuman</button>
                 </div>
 
                 <div class="pos-layout">
                     <div class="menu-section">
                         <div class="section-title">
-                            <h3>Choose <span id="activeCategoryName">Menu</span></h3>
-                            <span id="menuResultCount">0</span> items
+                            <h3>Pilih <span id="activeCategoryName">Menu</span></h3>
+                            <span id="menuResultCount">0</span> item
                         </div>
                         <div class="menu-grid" id="menuGrid"></div>
                     </div>
 
                     <div class="cart-section">
                         <div class="cart-header">
-                            <h3><i class="fas fa-receipt"></i> Current Orders</h3>
+                            <h3><i class="fas fa-receipt"></i> Pesanan</h3>
                             <div class="table-info">
-                                <span>Table</span>
-                                <strong id="tableNumber">#907653</strong>
-                                <span>T1</span>
+                                <span>Meja</span>
+                                <strong>#A001</strong>
                             </div>
                         </div>
                         <div class="cart-items" id="cartItems"></div>
                         <div class="cart-summary">
                             <div class="summary-row">
-                                <span>items(<span id="totalItems">0</span>)</span>
-                                <span>$<span id="subtotalAmount">0.00</span></span>
+                                <span>Total Item (<span id="totalItems">0</span>)</span>
+                                <span>Rp <span id="subtotalAmount">0</span></span>
                             </div>
                             <div class="summary-row">
-                                <span>Tax (10%)</span>
-                                <span>$<span id="taxAmount">0.00</span></span>
+                                <span>Pajak (10%)</span>
+                                <span>Rp <span id="taxAmount">0</span></span>
                             </div>
                             <div class="summary-row total">
-                                <span>Total</span>
-                                <span>$<span id="totalAmount">0.00</span></span>
+                                <span>TOTAL</span>
+                                <span>Rp <span id="totalAmount">0</span></span>
                             </div>
                             <button class="btn-print" id="printBillBtn">
-                                <i class="fas fa-print"></i> Print Bills
+                                <i class="fas fa-print"></i> Cetak & Simpan
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Take Away Page -->
-            <div id="takeawayPage" class="page-content">
-                <h2 style="margin-bottom: 20px;">Take Away Orders</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h4>Pending Takeaway</h4>
-                        <div class="value" id="pendingTakeaway">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Ready for Pickup</h4>
-                        <div class="value" id="readyPickup">0</div>
-                    </div>
-                </div>
-                <div id="takeawayList" class="history-list"></div>
-            </div>
-
             <!-- History Page -->
             <div id="historyPage" class="page-content">
-                <h2 style="margin-bottom: 20px;">Order History</h2>
+                <h2 style="margin-bottom: 20px;">Riwayat Transaksi</h2>
                 <div id="historyList" class="history-list"></div>
             </div>
 
             <!-- Report Page -->
             <div id="reportPage" class="page-content">
-                <h2 style="margin-bottom: 20px;">Sales Report</h2>
+                <h2 style="margin-bottom: 20px;">Laporan Penjualan</h2>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h4>Total Orders</h4>
+                        <h4>Total Transaksi</h4>
                         <div class="value" id="totalOrders">0</div>
                     </div>
                     <div class="stat-card">
-                        <h4>Total Revenue</h4>
-                        <div class="value" id="totalRevenue">$0</div>
+                        <h4>Total Pendapatan</h4>
+                        <div class="value" id="totalRevenue">Rp 0</div>
                     </div>
                     <div class="stat-card">
-                        <h4>Today's Sales</h4>
-                        <div class="value" id="todaySales">$0</div>
-                    </div>
-                    <div class="stat-card">
-                        <h4>This Month</h4>
-                        <div class="value" id="monthSales">$0</div>
+                        <h4>Penjualan Hari Ini</h4>
+                        <div class="value" id="todaySales">Rp 0</div>
                     </div>
                 </div>
                 <div id="reportDetails" class="history-list"></div>
@@ -949,237 +887,166 @@
 
             <!-- Alert Page -->
             <div id="alertPage" class="page-content">
-                <h2 style="margin-bottom: 20px;">Stock Alerts</h2>
+                <h2 style="margin-bottom: 20px;">Peringatan Stok</h2>
                 <div id="alertList" class="alert-list"></div>
             </div>
 
             <!-- Admin Panel Page -->
             <div id="adminPage" class="page-content">
-                <h2 style="margin-bottom: 20px;">Admin Panel</h2>
-                <div class="stats-grid">
-                    <div class="stat-card" onclick="adminFunctions.showUserManagement()">
-                        <h4>Total Users</h4>
-                        <div class="value" id="totalUsers">0</div>
-                    </div>
-                    <div class="stat-card" onclick="adminFunctions.showMenuManagement()">
-                        <h4>Menu Items</h4>
-                        <div class="value" id="totalMenuItems">0</div>
-                    </div>
-                    <div class="stat-card" onclick="adminFunctions.showLowStockItems()">
-                        <h4>Low Stock Items</h4>
-                        <div class="value" id="lowStockCount">0</div>
-                    </div>
-                </div>
-                
+                <h2 style="margin-bottom: 20px;">Panel Admin - Manajemen Produk</h2>
                 <div style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
-                    <button class="btn-add" onclick="adminFunctions.showUserManagement()">
-                        <i class="fas fa-users"></i> Manage Users
+                    <button class="btn-add" id="showAddMenuBtn">
+                        <i class="fas fa-plus"></i> Tambah Produk Baru
                     </button>
-                    <button class="btn-add" onclick="adminFunctions.showMenuManagement()">
-                        <i class="fas fa-utensils"></i> Manage Menu
-                    </button>
-                    <button class="btn-add" onclick="adminFunctions.showExportData()">
-                        <i class="fas fa-download"></i> Export Data
-                    </button>
-                    <button class="btn-add btn-danger" onclick="adminFunctions.clearAllData()">
-                        <i class="fas fa-trash"></i> Clear All Data
+                    <button class="btn-add" onclick="loadMenuList()">
+                        <i class="fas fa-list"></i> Refresh Daftar Produk
                     </button>
                 </div>
-                
-                <div id="adminContent">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h4>Today's Revenue</h4>
-                            <div class="value" id="adminTodayRevenue">$0</div>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Most Sold Item</h4>
-                            <div class="value" id="topItem">-</div>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Average Order</h4>
-                            <div class="value" id="avgOrder">$0</div>
-                        </div>
-                    </div>
+                <div id="adminMenuList" class="menu-admin-list">
+                    <!-- Daftar produk akan tampil di sini -->
                 </div>
             </div>
 
             <!-- Settings Page -->
             <div id="settingsPage" class="page-content">
-                <h2 style="margin-bottom: 20px;">Settings</h2>
+                <h2 style="margin-bottom: 20px;">Pengaturan</h2>
                 <div class="settings-form">
                     <div class="input-group">
-                        <label>Restaurant Name</label>
+                        <label>Nama Restoran</label>
                         <input type="text" id="restaurantName" value="Cheseto Restaurant">
                     </div>
                     <div class="input-group">
-                        <label>Tax Rate (%)</label>
+                        <label>Pajak (%)</label>
                         <input type="number" id="taxRate" value="10" step="1">
                     </div>
-                    <div class="input-group">
-                        <label>Low Stock Threshold</label>
-                        <input type="number" id="lowStockThreshold" value="5">
-                    </div>
-                    <button class="btn-auth" id="saveSettingsBtn">Save Settings</button>
+                    <button class="btn-auth" id="saveSettingsBtn">Simpan</button>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Auth Modal -->
+    <!-- Login Modal -->
     <div id="authModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">Login</h2>
+                <h2 id="modalTitle">Login Admin</h2>
                 <span class="close-modal">&times;</span>
             </div>
             <div class="modal-body">
                 <div class="input-group">
                     <label>Username</label>
-                    <input type="text" id="loginUsername" placeholder="Enter username">
+                    <input type="text" id="loginUsername" placeholder="Masukkan username">
                 </div>
                 <div class="input-group">
                     <label>Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter password">
+                    <input type="password" id="loginPassword" placeholder="Masukkan password">
                 </div>
                 <button class="btn-auth" id="authSubmitBtn">Login</button>
                 <div class="auth-switch">
-                    <a id="switchAuthMode">Don't have an account? Register</a>
+                    <p style="margin-top: 10px; font-size: 12px;">Demo: admin / admin123</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Confirm Logout Modal -->
+    <!-- Logout Confirm Modal -->
     <div id="logoutConfirmModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Confirm Logout</h2>
+                <h2>Konfirmasi Logout</h2>
                 <span class="close-modal" onclick="closeModal('logoutConfirmModal')">&times;</span>
             </div>
             <div class="modal-body">
-                <p style="margin-bottom: 20px;">Are you sure you want to logout? You will need to login again to access the system.</p>
+                <p style="margin-bottom: 20px;">Yakin ingin logout?</p>
                 <div class="confirm-modal-buttons">
-                    <button class="confirm-no" onclick="closeModal('logoutConfirmModal')">Cancel</button>
-                    <button class="confirm-yes" id="confirmLogoutBtn">Yes, Logout</button>
+                    <button class="confirm-no" onclick="closeModal('logoutConfirmModal')">Batal</button>
+                    <button class="confirm-yes" id="confirmLogoutBtn">Logout</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Admin Modals -->
-    <div id="userModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="userModalTitle">Add User</h2>
-                <span class="close-modal" onclick="closeModal('userModal')">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="input-group">
-                    <label>Name</label>
-                    <input type="text" id="userName" placeholder="Full name">
-                </div>
-                <div class="input-group">
-                    <label>Username</label>
-                    <input type="text" id="userUsername" placeholder="Username">
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" id="userPassword" placeholder="Password">
-                </div>
-                <div class="input-group">
-                    <label>Role</label>
-                    <select id="userRole">
-                        <option value="kasir">Cashier</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </div>
-                <button class="btn-auth" id="saveUserBtn">Save User</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- Add/Edit Menu Modal -->
     <div id="menuModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="menuModalTitle">Add Menu Item</h2>
+                <h2 id="menuModalTitle">Tambah Produk</h2>
                 <span class="close-modal" onclick="closeModal('menuModal')">&times;</span>
             </div>
             <div class="modal-body">
                 <div class="input-group">
-                    <label>Menu Name</label>
-                    <input type="text" id="menuName" placeholder="Item name">
+                    <label>Nama Menu</label>
+                    <input type="text" id="menuName" placeholder="Contoh: Nasi Goreng">
                 </div>
                 <div class="input-group">
-                    <label>Category</label>
+                    <label>Kategori</label>
                     <select id="menuCategory">
                         <option value="Pizza">Pizza</option>
                         <option value="Burger">Burger</option>
                         <option value="Rice">Rice</option>
                         <option value="Snacks">Snacks</option>
-                        <option value="Drinks">Drinks</option>
+                        <option value="Drinks">Minuman</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label>Price ($)</label>
-                    <input type="number" id="menuPrice" step="0.01" placeholder="0.00">
+                    <label>Harga (Rp)</label>
+                    <input type="number" id="menuPrice" step="1000" placeholder="0">
                 </div>
                 <div class="input-group">
-                    <label>Stock Status</label>
+                    <label>Status Stok</label>
                     <select id="menuStock">
-                        <option value="true">In Stock</option>
-                        <option value="false">Out of Stock</option>
+                        <option value="true">Tersedia</option>
+                        <option value="false">Habis</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label>Notes (optional)</label>
-                    <textarea id="menuNote" rows="2" placeholder="Special notes..."></textarea>
+                    <label>Catatan (opsional)</label>
+                    <textarea id="menuNote" rows="2" placeholder="Contoh: Pedas, Extra Cheese..."></textarea>
                 </div>
-                <button class="btn-auth" id="saveMenuBtn">Save Menu Item</button>
+                <button class="btn-auth" id="saveMenuBtn">Simpan Produk</button>
             </div>
         </div>
     </div>
 
-    <!-- Toast Notifikasi -->
+    <!-- Toast -->
     <div id="toast" class="toast"></div>
 
     <script>
-        // Data Menu
+        // ==================== DATA PRODUK (MENU) ====================
         let menuData = [
-            { id: 1, name: "Orange Juice", category: "Drinks", price: 2.87, note: "Less Ice", stock: true, pan: null },
-            { id: 2, name: "American Favorite", category: "Pizza", price: 4.87, crust: "Stuffed Crust Sosis", extras: "Extra Mozarella", stock: true, pan: 18 },
-            { id: 3, name: "Chicken Mushroom", category: "Pizza", price: 5.87, crust: "Thin Crust", stock: true, pan: 9 },
-            { id: 4, name: "Favorite Cheese", category: "Pizza", price: 6.57, crust: "Stuffed Crust Cheese", stock: true, pan: 7 },
-            { id: 5, name: "Super Supreme", category: "Pizza", price: 5.75, crust: "Stuffed Crust Sosis", stock: true, pan: 14 },
-            { id: 6, name: "Meat Lovers", category: "Pizza", price: 6.37, stock: true, pan: 10 },
-            { id: 7, name: "Ultimate Cheese", category: "Pizza", price: 4.27, stock: true, pan: 8 },
-            { id: 8, name: "Classic Burger", category: "Burger", price: 5.50, stock: true, pan: null },
-            { id: 9, name: "Cheese Burger", category: "Burger", price: 6.20, stock: true, pan: null },
-            { id: 10, name: "Chicken Rice Bowl", category: "Rice", price: 7.20, stock: false, pan: null },
-            { id: 11, name: "French Fries", category: "Snacks", price: 3.50, stock: true, pan: null },
-            { id: 12, name: "Iced Tea", category: "Drinks", price: 1.99, stock: true, pan: null }
+            { id: 1, name: "Jus Jeruk", category: "Drinks", price: 25000, note: "Kurang Es", stock: true },
+            { id: 2, name: "Pizza American Favorite", category: "Pizza", price: 55000, crust: "Stuffed Crust", stock: true },
+            { id: 3, name: "Pizza Chicken Mushroom", category: "Pizza", price: 65000, stock: true },
+            { id: 4, name: "Pizza Favorite Cheese", category: "Pizza", price: 70000, stock: true },
+            { id: 5, name: "Pizza Super Supreme", category: "Pizza", price: 75000, stock: true },
+            { id: 6, name: "Classic Burger", category: "Burger", price: 35000, stock: true },
+            { id: 7, name: "Cheese Burger", category: "Burger", price: 42000, stock: true },
+            { id: 8, name: "Nasi Ayam Bakar", category: "Rice", price: 28000, stock: true },
+            { id: 9, name: "Nasi Goreng Spesial", category: "Rice", price: 32000, stock: true },
+            { id: 10, name: "Kentang Goreng", category: "Snacks", price: 18000, stock: true },
+            { id: 11, name: "Cumi Goreng Tepung", category: "Snacks", price: 25000, stock: false },
+            { id: 12, name: "Es Teh Manis", category: "Drinks", price: 8000, stock: true },
+            { id: 13, name: "Es Jeruk", category: "Drinks", price: 10000, stock: true }
         ];
 
-        // Data storage
+        // Data transaksi & user
         let cart = [];
         let currentCategory = "all";
         let searchQuery = "";
         let currentUser = null;
-        let authMode = "login";
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
-        let takeawayOrders = JSON.parse(localStorage.getItem('takeawayOrders')) || [];
-        let settings = JSON.parse(localStorage.getItem('settings')) || { restaurantName: "Cheseto Restaurant", taxRate: 10, lowStockThreshold: 5 };
-        
-        // Load menu from localStorage
+        let settings = JSON.parse(localStorage.getItem('settings')) || { restaurantName: "Cheseto Restaurant", taxRate: 10 };
+
+        // Load data dari localStorage
         const savedMenu = localStorage.getItem('menuData');
         if (savedMenu) {
             menuData = JSON.parse(savedMenu);
         }
 
-        // Sample users
+        // User default (admin dan kasir)
         let users = JSON.parse(localStorage.getItem('users')) || [
             { username: "admin", password: "admin123", role: "admin", name: "Admin Cheseto" },
-            { username: "kasir", password: "kasir123", role: "kasir", name: "Kasir User" }
+            { username: "kasir", password: "kasir123", role: "kasir", name: "Kasir" }
         ];
 
         // DOM Elements
@@ -1200,25 +1067,16 @@
         const logoutConfirmModal = document.getElementById("logoutConfirmModal");
         const profileBtn = document.getElementById("profileBtn");
 
-        // Helper functions
+        // ==================== FUNGSI UTILITY ====================
         function saveData() {
             localStorage.setItem('orders', JSON.stringify(orders));
-            localStorage.setItem('takeawayOrders', JSON.stringify(takeawayOrders));
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('settings', JSON.stringify(settings));
             localStorage.setItem('menuData', JSON.stringify(menuData));
         }
 
-        function updateStockWarning() {
-            const outOfStock = menuData.filter(m => !m.stock).length;
-            outOfStockCountSpan.textContent = outOfStock;
-            if (document.getElementById('totalMenuItems')) {
-                document.getElementById('totalMenuItems').textContent = menuData.length;
-            }
-            const lowStock = menuData.filter(m => m.stock && m.pan && m.pan < settings.lowStockThreshold).length;
-            if (document.getElementById('lowStockCount')) {
-                document.getElementById('lowStockCount').textContent = lowStock;
-            }
+        function formatRupiah(angka) {
+            return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
 
         function showToast(msg, bgColor = "#1E293B") {
@@ -1230,7 +1088,12 @@
             }, 2000);
         }
 
-        // Render Menu berdasarkan filter
+        function updateStockWarning() {
+            const outOfStock = menuData.filter(m => !m.stock).length;
+            outOfStockCountSpan.textContent = outOfStock;
+        }
+
+        // ==================== RENDER MENU (TAMPIL PRODUK) ====================
         function renderMenu() {
             let filtered = menuData.filter(item => {
                 const matchCategory = currentCategory === "all" || item.category === currentCategory;
@@ -1238,27 +1101,25 @@
                 return matchCategory && matchSearch;
             });
 
-            const catDisplay = currentCategory === "all" ? "Menu" : currentCategory;
+            const catDisplay = currentCategory === "all" ? "Semua Menu" : currentCategory;
             activeCategoryName.textContent = catDisplay;
             menuResultCount.textContent = filtered.length;
 
             if (menuGrid) {
                 menuGrid.innerHTML = filtered.map(item => `
                     <div class="menu-card ${!item.stock ? 'out-of-stock' : ''}" data-id="${item.id}">
-                        <div class="badge-stock">${item.pan ? `${item.pan} Pan Available` : (item.stock ? 'In Stock' : 'Out of Stock')}</div>
+                        <div class="badge-stock">${item.stock ? 'Tersedia' : 'Habis'}</div>
                         <h4>${item.name}</h4>
                         ${item.note ? `<div class="note">${item.note}</div>` : ''}
-                        ${item.crust ? `<div class="note">Crust: ${item.crust}</div>` : ''}
-                        ${item.extras ? `<div class="note">Extras: ${item.extras}</div>` : ''}
-                        <div class="price">$${item.price.toFixed(2)}</div>
-                        ${!item.stock ? '<div style="color:#EF4444; font-size:11px; margin-top:8px;">Out of Stock</div>' : ''}
+                        <div class="price">Rp ${formatRupiah(item.price)}</div>
+                        ${!item.stock ? '<div style="color:#EF4444; font-size:11px; margin-top:8px;">Stok Habis</div>' : ''}
                     </div>
                 `).join('');
 
                 document.querySelectorAll('.menu-card').forEach(card => {
-                    card.addEventListener('click', (e) => {
+                    card.addEventListener('click', () => {
                         if (!currentUser) {
-                            showToast("Please login first!", "#EF4444");
+                            showToast("Silakan login terlebih dahulu!", "#EF4444");
                             authModal.style.display = "block";
                             return;
                         }
@@ -1267,13 +1128,14 @@
                         if (item && item.stock) {
                             addToCart(item);
                         } else if (item && !item.stock) {
-                            showToast("Item is out of stock!", "#EF4444");
+                            showToast("Stok produk ini habis!", "#EF4444");
                         }
                     });
                 });
             }
         }
 
+        // ==================== TRANSAKSI (LOGIKA CART) ====================
         function addToCart(item) {
             const existingIndex = cart.findIndex(c => c.id === item.id);
             if (existingIndex !== -1) {
@@ -1283,30 +1145,26 @@
                     id: item.id,
                     name: item.name,
                     note: item.note || null,
-                    crust: item.crust || null,
-                    extras: item.extras || null,
                     price: item.price,
                     quantity: 1
                 });
             }
             renderCart();
-            showToast(`${item.name} added to order`);
+            showToast(`${item.name} ditambahkan ke pesanan`);
         }
 
         function renderCart() {
             if (!cartItemsContainer) return;
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:40px;">No orders yet</div>`;
+                cartItemsContainer.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:40px;">Belum ada pesanan</div>`;
             } else {
                 cartItemsContainer.innerHTML = cart.map((item, idx) => `
                     <div class="cart-item">
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.name}</div>
                             ${item.note ? `<div class="cart-item-note">${item.note}</div>` : ''}
-                            ${item.crust ? `<div class="cart-item-note">${item.crust}</div>` : ''}
-                            ${item.extras ? `<div class="cart-item-note">${item.extras}</div>` : ''}
                         </div>
-                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                        <div class="cart-item-price">Rp ${formatRupiah(item.price * item.quantity)}</div>
                         <div class="cart-item-actions">
                             <button class="qty-btn dec-qty" data-idx="${idx}">-</button>
                             <span class="item-qty">${item.quantity}</span>
@@ -1352,14 +1210,15 @@
             const total = subtotal + tax;
 
             totalItemsSpan.textContent = totalItems;
-            subtotalAmountSpan.textContent = subtotal.toFixed(2);
-            taxAmountSpan.textContent = tax.toFixed(2);
-            totalAmountSpan.textContent = total.toFixed(2);
+            subtotalAmountSpan.textContent = formatRupiah(subtotal);
+            taxAmountSpan.textContent = formatRupiah(tax);
+            totalAmountSpan.textContent = formatRupiah(total);
         }
 
+        // ==================== CETAK & SIMPAN TRANSAKSI ====================
         function printBill() {
             if (cart.length === 0) {
-                showToast("Cart is empty!", "#EF4444");
+                showToast("Keranjang kosong!", "#EF4444");
                 return;
             }
             
@@ -1369,44 +1228,43 @@
             
             const order = {
                 id: Date.now(),
-                date: new Date().toLocaleString(),
+                date: new Date().toLocaleString('id-ID'),
                 items: [...cart],
                 subtotal: subtotal,
                 tax: tax,
                 total: total,
-                type: "dine-in",
                 cashier: currentUser ? currentUser.name : "Unknown"
             };
             
             orders.unshift(order);
             saveData();
             
-            let billContent = `=== ${settings.restaurantName} ===\n`;
-            billContent += `Table: #907653 | T1\n`;
-            billContent += `Cashier: ${order.cashier}\n`;
-            billContent += `${new Date().toLocaleString()}\n`;
-            billContent += `--------------------------------\n`;
+            // Tampilkan struk
+            let billContent = `╔══════════════════════════════════╗\n`;
+            billContent += `║       ${settings.restaurantName}       ║\n`;
+            billContent += `╠══════════════════════════════════╣\n`;
+            billContent += `║ Kasir: ${order.cashier.padEnd(25)}║\n`;
+            billContent += `║ ${new Date().toLocaleString('id-ID')} ║\n`;
+            billContent += `╠══════════════════════════════════╣\n`;
             cart.forEach(item => {
-                billContent += `${item.name} x${item.quantity}   $${(item.price * item.quantity).toFixed(2)}\n`;
-                if (item.crust) billContent += `   ${item.crust}\n`;
+                billContent += `║ ${item.name.substring(0,20).padEnd(20)} x${item.quantity}  Rp ${formatRupiah(item.price * item.quantity).padStart(8)} ║\n`;
             });
-            billContent += `--------------------------------\n`;
-            billContent += `Subtotal: $${subtotal.toFixed(2)}\n`;
-            billContent += `Tax (${settings.taxRate}%): $${tax.toFixed(2)}\n`;
-            billContent += `TOTAL: $${total.toFixed(2)}\n`;
-            billContent += `================================\n`;
-            billContent += `Thank you! Enjoy your meal!\n`;
+            billContent += `╠══════════════════════════════════╣\n`;
+            billContent += `║ Subtotal:      Rp ${formatRupiah(subtotal).padStart(12)} ║\n`;
+            billContent += `║ Pajak (${settings.taxRate}%):    Rp ${formatRupiah(tax).padStart(12)} ║\n`;
+            billContent += `║ TOTAL:         Rp ${formatRupiah(total).padStart(12)} ║\n`;
+            billContent += `╚══════════════════════════════════╝\n`;
+            billContent += `Terima kasih! Selamat menikmati!\n`;
             alert(billContent);
             
             cart = [];
             renderCart();
-            showToast("Order completed and saved!");
+            showToast("Transaksi berhasil disimpan!");
             updateReportPage();
             updateHistoryPage();
-            updateAdminStats();
         }
 
-        // Page navigation
+        // ==================== HALAMAN LAINNYA ====================
         function switchPage(pageId) {
             document.querySelectorAll('.page-content').forEach(page => {
                 page.classList.remove('active-page');
@@ -1423,8 +1281,7 @@
             if (pageId === 'history') updateHistoryPage();
             if (pageId === 'report') updateReportPage();
             if (pageId === 'alert') updateAlertPage();
-            if (pageId === 'takeaway') updateTakeawayPage();
-            if (pageId === 'admin') updateAdminPage();
+            if (pageId === 'admin') loadMenuList();
         }
 
         function updateHistoryPage() {
@@ -1435,15 +1292,15 @@
                         <div>
                             <strong>Order #${order.id}</strong><br>
                             <small>${order.date}</small><br>
-                            <small>${order.items.length} items | Cashier: ${order.cashier || 'N/A'}</small>
+                            <small>${order.items.length} item | Kasir: ${order.cashier}</small>
                         </div>
                         <div style="text-align: right;">
-                            <strong>$${order.total.toFixed(2)}</strong>
+                            <strong>Rp ${formatRupiah(order.total)}</strong>
                         </div>
                     </div>
                 `).join('');
                 if (orders.length === 0) {
-                    historyList.innerHTML = '<div style="padding: 20px; text-align: center;">No orders yet</div>';
+                    historyList.innerHTML = '<div style="padding: 20px; text-align: center;">Belum ada transaksi</div>';
                 }
             }
         }
@@ -1454,24 +1311,16 @@
             const today = new Date().toDateString();
             const todaySales = orders.filter(order => new Date(order.date).toDateString() === today).reduce((sum, order) => sum + order.total, 0);
             
-            const currentMonth = new Date().getMonth();
-            const currentYear = new Date().getFullYear();
-            const monthSales = orders.filter(order => {
-                const orderDate = new Date(order.date);
-                return orderDate.getMonth() === currentMonth && orderDate.getFullYear() === currentYear;
-            }).reduce((sum, order) => sum + order.total, 0);
-            
             document.getElementById('totalOrders').textContent = totalOrders;
-            document.getElementById('totalRevenue').textContent = `$${totalRevenue.toFixed(2)}`;
-            document.getElementById('todaySales').textContent = `$${todaySales.toFixed(2)}`;
-            document.getElementById('monthSales').textContent = `$${monthSales.toFixed(2)}`;
+            document.getElementById('totalRevenue').textContent = `Rp ${formatRupiah(totalRevenue)}`;
+            document.getElementById('todaySales').textContent = `Rp ${formatRupiah(todaySales)}`;
             
             const reportDetails = document.getElementById('reportDetails');
             if (reportDetails) {
                 reportDetails.innerHTML = orders.slice(0, 20).map(order => `
                     <div class="history-item">
                         <div>${order.date}</div>
-                        <div>$${order.total.toFixed(2)}</div>
+                        <div>Rp ${formatRupiah(order.total)}</div>
                     </div>
                 `).join('');
             }
@@ -1479,89 +1328,176 @@
 
         function updateAlertPage() {
             const outOfStockItems = menuData.filter(item => !item.stock);
-            const lowStockItems = menuData.filter(item => item.stock && item.pan && item.pan < settings.lowStockThreshold);
             const alertList = document.getElementById('alertList');
             if (alertList) {
-                alertList.innerHTML = [
-                    ...outOfStockItems.map(item => `
-                        <div class="alert-item warning">
-                            <div>
-                                <strong>${item.name}</strong><br>
-                                <small>OUT OF STOCK - Category: ${item.category}</small>
-                            </div>
-                            <i class="fas fa-times-circle" style="color: #EF4444;"></i>
+                alertList.innerHTML = outOfStockItems.map(item => `
+                    <div class="alert-item warning">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>Kategori: ${item.category} - Stok Habis!</small>
                         </div>
-                    `),
-                    ...lowStockItems.map(item => `
-                        <div class="alert-item warning">
-                            <div>
-                                <strong>${item.name}</strong><br>
-                                <small>LOW STOCK: Only ${item.pan} pans left</small>
-                            </div>
-                            <i class="fas fa-exclamation-triangle" style="color: #F59E0B;"></i>
-                        </div>
-                    `)
-                ].join('');
-                if (outOfStockItems.length === 0 && lowStockItems.length === 0) {
-                    alertList.innerHTML = '<div style="padding: 20px; text-align: center;">No stock alerts</div>';
+                        <i class="fas fa-exclamation-triangle" style="color: #F59E0B;"></i>
+                    </div>
+                `).join('');
+                if (outOfStockItems.length === 0) {
+                    alertList.innerHTML = '<div style="padding: 20px; text-align: center;">Semua produk tersedia</div>';
                 }
             }
         }
 
-        function updateTakeawayPage() {
-            const pending = takeawayOrders.filter(o => o.status === 'pending').length;
-            const ready = takeawayOrders.filter(o => o.status === 'ready').length;
-            document.getElementById('pendingTakeaway').textContent = pending;
-            document.getElementById('readyPickup').textContent = ready;
-            
-            const takeawayList = document.getElementById('takeawayList');
-            if (takeawayList) {
-                takeawayList.innerHTML = takeawayOrders.map(order => `
-                    <div class="history-item">
-                        <div>
-                            <strong>Order #${order.id}</strong><br>
-                            <small>${order.date}</small>
+        // ==================== ADMIN: MANAJEMEN PRODUK ====================
+        function loadMenuList() {
+            const container = document.getElementById('adminMenuList');
+            if (container) {
+                container.innerHTML = `
+                    <h3 style="margin-bottom: 15px;">Daftar Semua Produk (${menuData.length} item)</h3>
+                    ${menuData.map((item, idx) => `
+                        <div class="menu-admin-item">
+                            <div>
+                                <strong>${item.name}</strong><br>
+                                <small>${item.category} | Rp ${formatRupiah(item.price)} | ${item.stock ? '✅ Tersedia' : '❌ Habis'}</small>
+                                ${item.note ? `<br><small>📝 ${item.note}</small>` : ''}
+                            </div>
+                            <div class="action-buttons">
+                                <button class="icon-btn edit" onclick="editMenuItem(${idx})">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="icon-btn delete" onclick="deleteMenuItem(${idx})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <span style="background: ${order.status === 'pending' ? '#FEF3C7' : '#D1FAE5'}; padding: 4px 12px; border-radius: 20px;">
-                                ${order.status === 'pending' ? 'Pending' : 'Ready'}
-                            </span>
-                        </div>
-                    </div>
-                `).join('');
+                    `).join('')}
+                `;
             }
         }
 
-        function updateAdminPage() {
-            if (!currentUser || currentUser.role !== 'admin') return;
-            
-            document.getElementById('totalUsers').textContent = users.length;
-            document.getElementById('totalMenuItems').textContent = menuData.length;
-            const lowStock = menuData.filter(m => m.stock && m.pan && m.pan < settings.lowStockThreshold).length;
-            document.getElementById('lowStockCount').textContent = lowStock;
-            updateAdminStats();
+        // TAMBAH PRODUK
+        function showAddMenuModal() {
+            if (!currentUser || currentUser.role !== 'admin') {
+                showToast("Akses ditolak! Hanya admin.", "#EF4444");
+                return;
+            }
+            document.getElementById('menuModalTitle').textContent = "Tambah Produk Baru";
+            document.getElementById('menuName').value = '';
+            document.getElementById('menuCategory').value = 'Pizza';
+            document.getElementById('menuPrice').value = '';
+            document.getElementById('menuStock').value = 'true';
+            document.getElementById('menuNote').value = '';
+            document.getElementById('saveMenuBtn').onclick = () => addMenuItem();
+            document.getElementById('menuModal').style.display = "block";
         }
 
-        function updateAdminStats() {
-            const today = new Date().toDateString();
-            const todayRevenue = orders.filter(order => new Date(order.date).toDateString() === today).reduce((sum, order) => sum + order.total, 0);
-            document.getElementById('adminTodayRevenue').textContent = `$${todayRevenue.toFixed(2)}`;
+        function addMenuItem() {
+            const newId = Math.max(...menuData.map(m => m.id), 0) + 1;
+            const newItem = {
+                id: newId,
+                name: document.getElementById('menuName').value,
+                category: document.getElementById('menuCategory').value,
+                price: parseInt(document.getElementById('menuPrice').value),
+                stock: document.getElementById('menuStock').value === 'true',
+                note: document.getElementById('menuNote').value || null
+            };
             
-            // Find most sold item
-            const itemSales = {};
-            orders.forEach(order => {
-                order.items.forEach(item => {
-                    itemSales[item.name] = (itemSales[item.name] || 0) + item.quantity;
-                });
-            });
-            let topItem = Object.keys(itemSales).length > 0 ? Object.keys(itemSales).reduce((a, b) => itemSales[a] > itemSales[b] ? a : b) : '-';
-            document.getElementById('topItem').textContent = topItem;
+            if (!newItem.name || !newItem.price) {
+                showToast("Nama dan harga harus diisi!", "#EF4444");
+                return;
+            }
             
-            const avgOrder = orders.length > 0 ? orders.reduce((sum, o) => sum + o.total, 0) / orders.length : 0;
-            document.getElementById('avgOrder').textContent = `$${avgOrder.toFixed(2)}`;
+            menuData.push(newItem);
+            saveData();
+            showToast(`Produk "${newItem.name}" berhasil ditambahkan!`);
+            closeModal('menuModal');
+            loadMenuList();
+            renderMenu();
+            updateStockWarning();
+            updateAlertPage();
         }
 
-        // Logout function with confirmation
+        // EDIT PRODUK
+        function editMenuItem(index) {
+            if (!currentUser || currentUser.role !== 'admin') {
+                showToast("Akses ditolak! Hanya admin.", "#EF4444");
+                return;
+            }
+            const item = menuData[index];
+            document.getElementById('menuModalTitle').textContent = "Edit Produk";
+            document.getElementById('menuName').value = item.name;
+            document.getElementById('menuCategory').value = item.category;
+            document.getElementById('menuPrice').value = item.price;
+            document.getElementById('menuStock').value = item.stock;
+            document.getElementById('menuNote').value = item.note || '';
+            
+            document.getElementById('saveMenuBtn').onclick = () => {
+                item.name = document.getElementById('menuName').value;
+                item.category = document.getElementById('menuCategory').value;
+                item.price = parseInt(document.getElementById('menuPrice').value);
+                item.stock = document.getElementById('menuStock').value === 'true';
+                item.note = document.getElementById('menuNote').value || null;
+                saveData();
+                showToast(`Produk "${item.name}" berhasil diupdate!`);
+                closeModal('menuModal');
+                loadMenuList();
+                renderMenu();
+                updateStockWarning();
+                updateAlertPage();
+            };
+            document.getElementById('menuModal').style.display = "block";
+        }
+
+        // HAPUS PRODUK
+        function deleteMenuItem(index) {
+            if (!currentUser || currentUser.role !== 'admin') {
+                showToast("Akses ditolak! Hanya admin.", "#EF4444");
+                return;
+            }
+            const itemName = menuData[index].name;
+            if (confirm(`Yakin ingin menghapus produk "${itemName}"?`)) {
+                menuData.splice(index, 1);
+                saveData();
+                showToast(`Produk "${itemName}" berhasil dihapus!`);
+                loadMenuList();
+                renderMenu();
+                updateStockWarning();
+                updateAlertPage();
+            }
+        }
+
+        // ==================== LOGIN & LOGOUT ====================
+        function openAuthModal() {
+            authModal.style.display = "block";
+        }
+
+        function closeAuthModal() {
+            authModal.style.display = "none";
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const user = users.find(u => u.username === username && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                document.getElementById('profileName').textContent = user.name;
+                document.getElementById('profileRole').textContent = user.role === 'admin' ? 'Admin' : 'Kasir';
+                document.getElementById('profileImg').src = `https://ui-avatars.com/api/?background=FF6B35&color=fff&name=${user.name}`;
+                showToast(`Selamat datang ${user.name}!`);
+                closeAuthModal();
+                
+                // Tampilkan/sembunyikan menu admin
+                const adminNav = document.querySelector('[data-page="admin"]');
+                if (adminNav) {
+                    adminNav.style.display = user.role === 'admin' ? 'flex' : 'none';
+                }
+                
+                document.getElementById('loginUsername').value = '';
+                document.getElementById('loginPassword').value = '';
+            } else {
+                showToast("Username atau password salah! Gunakan admin/admin123", "#EF4444");
+            }
+        }
+
         function logout() {
             currentUser = null;
             document.getElementById('profileName').textContent = "Guest User";
@@ -1572,317 +1508,18 @@
             switchPage('home');
             const adminNav = document.querySelector('[data-page="admin"]');
             if (adminNav) adminNav.style.display = 'none';
-            showToast("You have been logged out successfully!");
+            showToast("Anda telah logout!");
             closeModal('logoutConfirmModal');
-            // Clear any sensitive data from memory
             setTimeout(() => {
                 authModal.style.display = "block";
             }, 500);
-        }
-
-        // Admin Functions
-        const adminFunctions = {
-            showUserManagement() {
-                if (!currentUser || currentUser.role !== 'admin') {
-                    showToast("Access denied! Admin only.", "#EF4444");
-                    return;
-                }
-                const modal = document.getElementById('userModal');
-                document.getElementById('userModalTitle').textContent = 'Manage Users';
-                document.getElementById('saveUserBtn').onclick = () => this.addUser();
-                this.renderUserList();
-                modal.style.display = 'block';
-            },
-            
-            renderUserList() {
-                const userList = document.createElement('div');
-                userList.className = 'user-list';
-                userList.innerHTML = users.map((user, idx) => `
-                    <div class="user-item">
-                        <div>
-                            <strong>${user.name}</strong><br>
-                            <small>@${user.username} | ${user.role}</small>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="icon-btn delete" onclick="adminFunctions.deleteUser(${idx})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
-                
-                const modalBody = document.querySelector('#userModal .modal-body');
-                const existingList = modalBody.querySelector('.user-list');
-                if (existingList) existingList.remove();
-                if (users.length > 0) modalBody.appendChild(userList);
-            },
-            
-            addUser() {
-                const name = document.getElementById('userName').value;
-                const username = document.getElementById('userUsername').value;
-                const password = document.getElementById('userPassword').value;
-                const role = document.getElementById('userRole').value;
-                
-                if (!name || !username || !password) {
-                    showToast("Please fill all fields!", "#EF4444");
-                    return;
-                }
-                
-                if (users.find(u => u.username === username)) {
-                    showToast("Username already exists!", "#EF4444");
-                    return;
-                }
-                
-                users.push({ username, password, role, name });
-                saveData();
-                showToast("User added successfully!");
-                this.renderUserList();
-                document.getElementById('userName').value = '';
-                document.getElementById('userUsername').value = '';
-                document.getElementById('userPassword').value = '';
-                updateAdminPage();
-            },
-            
-            deleteUser(index) {
-                if (users[index].username === 'admin') {
-                    showToast("Cannot delete main admin!", "#EF4444");
-                    return;
-                }
-                if (users[index].username === currentUser?.username) {
-                    showToast("Cannot delete your own account!", "#EF4444");
-                    return;
-                }
-                users.splice(index, 1);
-                saveData();
-                showToast("User deleted!");
-                this.renderUserList();
-                updateAdminPage();
-            },
-            
-            showMenuManagement() {
-                if (!currentUser || currentUser.role !== 'admin') {
-                    showToast("Access denied! Admin only.", "#EF4444");
-                    return;
-                }
-                const modal = document.getElementById('menuModal');
-                document.getElementById('menuModalTitle').textContent = 'Manage Menu';
-                document.getElementById('saveMenuBtn').onclick = () => this.addMenuItem();
-                this.renderMenuList();
-                modal.style.display = 'block';
-            },
-            
-            renderMenuList() {
-                const menuList = document.createElement('div');
-                menuList.className = 'menu-admin-list';
-                menuList.innerHTML = menuData.map((item, idx) => `
-                    <div class="menu-admin-item">
-                        <div>
-                            <strong>${item.name}</strong><br>
-                            <small>${item.category} | $${item.price} | ${item.stock ? 'In Stock' : 'Out of Stock'}</small>
-                        </div>
-                        <div class="action-buttons">
-                            <button class="icon-btn edit" onclick="adminFunctions.editMenuItem(${idx})">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="icon-btn delete" onclick="adminFunctions.deleteMenuItem(${idx})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
-                
-                const modalBody = document.querySelector('#menuModal .modal-body');
-                const existingList = modalBody.querySelector('.menu-admin-list');
-                if (existingList) existingList.remove();
-                if (menuData.length > 0) modalBody.appendChild(menuList);
-            },
-            
-            addMenuItem() {
-                const newId = Math.max(...menuData.map(m => m.id), 0) + 1;
-                const newItem = {
-                    id: newId,
-                    name: document.getElementById('menuName').value,
-                    category: document.getElementById('menuCategory').value,
-                    price: parseFloat(document.getElementById('menuPrice').value),
-                    stock: document.getElementById('menuStock').value === 'true',
-                    note: document.getElementById('menuNote').value || null
-                };
-                
-                if (!newItem.name || !newItem.price) {
-                    showToast("Please fill name and price!", "#EF4444");
-                    return;
-                }
-                
-                menuData.push(newItem);
-                saveData();
-                showToast("Menu item added!");
-                this.renderMenuList();
-                document.getElementById('menuName').value = '';
-                document.getElementById('menuPrice').value = '';
-                document.getElementById('menuNote').value = '';
-                updateStockWarning();
-                renderMenu();
-            },
-            
-            editMenuItem(index) {
-                const item = menuData[index];
-                document.getElementById('menuName').value = item.name;
-                document.getElementById('menuCategory').value = item.category;
-                document.getElementById('menuPrice').value = item.price;
-                document.getElementById('menuStock').value = item.stock;
-                document.getElementById('menuNote').value = item.note || '';
-                
-                document.getElementById('saveMenuBtn').onclick = () => {
-                    item.name = document.getElementById('menuName').value;
-                    item.category = document.getElementById('menuCategory').value;
-                    item.price = parseFloat(document.getElementById('menuPrice').value);
-                    item.stock = document.getElementById('menuStock').value === 'true';
-                    item.note = document.getElementById('menuNote').value || null;
-                    saveData();
-                    showToast("Menu item updated!");
-                    this.renderMenuList();
-                    updateStockWarning();
-                    renderMenu();
-                    document.getElementById('saveMenuBtn').onclick = () => this.addMenuItem();
-                };
-            },
-            
-            deleteMenuItem(index) {
-                if (confirm("Are you sure you want to delete this menu item?")) {
-                    menuData.splice(index, 1);
-                    saveData();
-                    showToast("Menu item deleted!");
-                    this.renderMenuList();
-                    updateStockWarning();
-                    renderMenu();
-                }
-            },
-            
-            showLowStockItems() {
-                updateAlertPage();
-                switchPage('alert');
-            },
-            
-            showExportData() {
-                if (!currentUser || currentUser.role !== 'admin') {
-                    showToast("Access denied! Admin only.", "#EF4444");
-                    return;
-                }
-                const exportData = {
-                    orders: orders,
-                    users: users,
-                    menuData: menuData,
-                    settings: settings,
-                    exportDate: new Date().toISOString()
-                };
-                const dataStr = JSON.stringify(exportData, null, 2);
-                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-                const exportFileDefaultName = `cheseto_export_${new Date().toISOString().slice(0,19)}.json`;
-                const linkElement = document.createElement('a');
-                linkElement.setAttribute('href', dataUri);
-                linkElement.setAttribute('download', exportFileDefaultName);
-                linkElement.click();
-                showToast("Data exported successfully!");
-            },
-            
-            clearAllData() {
-                if (!currentUser || currentUser.role !== 'admin') {
-                    showToast("Access denied! Admin only.", "#EF4444");
-                    return;
-                }
-                if (confirm("⚠️ WARNING: This will delete ALL data including orders, users, and menu items. This action cannot be undone! Are you sure?")) {
-                    const userInput = prompt("Type 'CONFIRM' to proceed:");
-                    if (userInput === 'CONFIRM') {
-                        orders = [];
-                        takeawayOrders = [];
-                        users = [{ username: "admin", password: "admin123", role: "admin", name: "Admin Cheseto" }];
-                        menuData = [
-                            { id: 1, name: "Orange Juice", category: "Drinks", price: 2.87, note: "Less Ice", stock: true, pan: null },
-                            { id: 2, name: "American Favorite", category: "Pizza", price: 4.87, crust: "Stuffed Crust Sosis", extras: "Extra Mozarella", stock: true, pan: 18 },
-                            { id: 3, name: "Chicken Mushroom", category: "Pizza", price: 5.87, crust: "Thin Crust", stock: true, pan: 9 }
-                        ];
-                        saveData();
-                        showToast("All data cleared!");
-                        location.reload();
-                    }
-                }
-            }
-        };
-
-        // Authentication
-        function openAuthModal() {
-            authModal.style.display = "block";
-        }
-
-        function closeAuthModal() {
-            authModal.style.display = "none";
-        }
-
-        function handleAuth() {
-            if (authMode === "login") {
-                const username = document.getElementById('loginUsername').value;
-                const password = document.getElementById('loginPassword').value;
-                const user = users.find(u => u.username === username && u.password === password);
-                if (user) {
-                    currentUser = user;
-                    document.getElementById('profileName').textContent = user.name;
-                    document.getElementById('profileRole').textContent = user.role === 'admin' ? 'Admin' : 'Cashier';
-                    document.getElementById('profileImg').src = `https://ui-avatars.com/api/?background=FF6B35&color=fff&name=${user.name}`;
-                    showToast(`Welcome ${user.name}!`);
-                    closeAuthModal();
-                    
-                    // Show/hide admin panel based on role
-                    const adminNav = document.querySelector('[data-page="admin"]');
-                    if (adminNav) {
-                        adminNav.style.display = user.role === 'admin' ? 'flex' : 'none';
-                    }
-                    
-                    // Clear login fields
-                    document.getElementById('loginUsername').value = '';
-                    document.getElementById('loginPassword').value = '';
-                    
-                    updateAdminPage();
-                } else {
-                    showToast("Invalid credentials! Use admin/admin123 or kasir/kasir123", "#EF4444");
-                }
-            } else {
-                const username = document.getElementById('loginUsername').value;
-                const password = document.getElementById('loginPassword').value;
-                const name = document.getElementById('loginUsername').value;
-                if (users.find(u => u.username === username)) {
-                    showToast("Username already exists!", "#EF4444");
-                } else {
-                    const newUser = { username, password, role: "kasir", name: name };
-                    users.push(newUser);
-                    saveData();
-                    showToast("Registration successful! Please login.");
-                    switchAuthMode();
-                }
-            }
-        }
-
-        function switchAuthMode() {
-            authMode = authMode === "login" ? "register" : "login";
-            const modalTitle = document.getElementById('modalTitle');
-            const submitBtn = document.getElementById('authSubmitBtn');
-            const switchLink = document.getElementById('switchAuthMode');
-            
-            if (authMode === "login") {
-                modalTitle.textContent = "Login";
-                submitBtn.textContent = "Login";
-                switchLink.textContent = "Don't have an account? Register";
-            } else {
-                modalTitle.textContent = "Register";
-                submitBtn.textContent = "Register";
-                switchLink.textContent = "Already have an account? Login";
-            }
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
         }
 
-        // Event Listeners
+        // ==================== EVENT LISTENERS ====================
         searchInput.addEventListener("input", (e) => {
             searchQuery = e.target.value;
             renderMenu();
@@ -1902,7 +1539,7 @@
         document.querySelectorAll('.nav-item').forEach(nav => {
             nav.addEventListener('click', () => {
                 if (!currentUser && nav.dataset.page !== 'home') {
-                    showToast("Please login first!", "#EF4444");
+                    showToast("Silakan login terlebih dahulu!", "#EF4444");
                     openAuthModal();
                     return;
                 }
@@ -1910,22 +1547,18 @@
             });
         });
         
-        // Profile click shows logout confirmation modal instead of direct logout
         profileBtn.addEventListener("click", () => {
             if (currentUser) {
-                // Show confirmation modal
                 logoutConfirmModal.style.display = "block";
             } else {
                 openAuthModal();
             }
         });
         
-        // Confirm logout button
         document.getElementById('confirmLogoutBtn').addEventListener('click', logout);
-        
         document.getElementById('stockWarningBtn').addEventListener('click', () => {
             if (!currentUser) {
-                showToast("Please login first!", "#EF4444");
+                showToast("Silakan login terlebih dahulu!", "#EF4444");
                 openAuthModal();
                 return;
             }
@@ -1933,18 +1566,13 @@
         });
         
         document.getElementById('saveSettingsBtn').addEventListener('click', () => {
-            if (!currentUser) {
-                showToast("Please login first!", "#EF4444");
-                openAuthModal();
-                return;
-            }
             settings.restaurantName = document.getElementById('restaurantName').value;
             settings.taxRate = parseFloat(document.getElementById('taxRate').value);
-            settings.lowStockThreshold = parseInt(document.getElementById('lowStockThreshold').value);
             saveData();
-            showToast("Settings saved!");
-            updateAlertPage();
+            showToast("Pengaturan disimpan!");
         });
+        
+        document.getElementById('showAddMenuBtn').addEventListener('click', showAddMenuModal);
         
         // Modal events
         document.querySelectorAll('.close-modal').forEach(closeBtn => {
@@ -1953,18 +1581,16 @@
                 if (modal) modal.style.display = "none";
             });
         });
-        document.getElementById('authSubmitBtn').addEventListener('click', handleAuth);
-        document.getElementById('switchAuthMode').addEventListener('click', switchAuthMode);
+        document.getElementById('authSubmitBtn').addEventListener('click', handleLogin);
         window.addEventListener('click', (e) => {
             if (e.target === authModal) closeAuthModal();
             if (e.target === logoutConfirmModal) closeModal('logoutConfirmModal');
             if (e.target.classList.contains('modal')) e.target.style.display = "none";
         });
         
-        // Initialize
+        // Inisialisasi
         document.getElementById('taxRate').value = settings.taxRate;
         document.getElementById('restaurantName').value = settings.restaurantName;
-        document.getElementById('lowStockThreshold').value = settings.lowStockThreshold || 5;
         
         updateStockWarning();
         renderMenu();
@@ -1972,22 +1598,20 @@
         updateHistoryPage();
         updateReportPage();
         updateAlertPage();
-        updateTakeawayPage();
-        updateAdminPage();
         
-        // Hide admin nav initially
         const adminNav = document.querySelector('[data-page="admin"]');
         if (adminNav) adminNav.style.display = 'none';
         
-        // Auto-show login modal for first time
         setTimeout(() => {
             if (!currentUser) {
                 openAuthModal();
             }
         }, 500);
         
-        // Make admin functions global
-        window.adminFunctions = adminFunctions;
+        // Export fungsi global
+        window.editMenuItem = editMenuItem;
+        window.deleteMenuItem = deleteMenuItem;
+        window.loadMenuList = loadMenuList;
         window.closeModal = closeModal;
     </script>
 </body>
