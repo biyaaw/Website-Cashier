@@ -30,6 +30,20 @@
         .btn-outline { background: transparent; color: #FF6B35; border: 2px solid #FF6B35; padding: 12px 30px; border-radius: 40px; font-weight: 600; cursor: pointer; }
         .hero-image { flex: 1; text-align: center; }
         .hero-image i { font-size: 200px; color: #FF6B35; opacity: 0.8; }
+        
+        /* SECTION USTADZ MEMBER BARU */
+        .ustadz-section { padding: 80px 50px; background: linear-gradient(135deg, #FFF5F0 0%, #FFE8E0 100%); }
+        .ustadz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .ustadz-card { background: white; border-radius: 24px; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: 0.3s; position: relative; overflow: hidden; }
+        .ustadz-card:hover { transform: translateY(-10px); }
+        .ustadz-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: #FF6B35; }
+        .ustadz-card i { font-size: 60px; color: #FF6B35; margin-bottom: 20px; }
+        .ustadz-card h3 { font-size: 24px; margin-bottom: 10px; color: #1E293B; }
+        .ustadz-card .badge-member { background: #FF6B35; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin: 10px 0; }
+        .ustadz-card .discount { font-size: 28px; font-weight: 800; color: #FF6B35; margin: 10px 0; }
+        .ustadz-card p { color: #64748B; margin-bottom: 15px; }
+        .btn-member { background: #FF6B35; color: white; border: none; padding: 10px 20px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        
         .features-section { padding: 80px 50px; background: #F8FAFC; }
         .section-title { text-align: center; font-size: 36px; font-weight: 700; margin-bottom: 50px; }
         .section-title span { color: #FF6B35; }
@@ -126,6 +140,7 @@
             <div class="nav-links">
                 <a onclick="scrollToSection('home')">Home</a>
                 <a onclick="scrollToSection('menuSection')">Menu</a>
+                <a onclick="scrollToSection('ustadzSection')">Member Ustadz</a>
                 <a onclick="scrollToSection('features')">Fitur</a>
                 <button class="btn-login-nav" onclick="showAuthModal()">Login</button>
             </div>
@@ -141,16 +156,29 @@
             </div>
             <div class="hero-image"><i class="fas fa-hamburger"></i></div>
         </div>
+        
+        <!-- SECTION MENU -->
         <div class="menu-section-home" id="menuSection">
             <h2 class="section-title">Menu <span>Spesial</span></h2>
             <div class="menu-grid-home" id="menuPreviewGrid"></div>
         </div>
+
+        <!-- SECTION BARU: 5 USTADZ MEMBER -->
+        <div class="ustadz-section" id="ustadzSection">
+            <h2 class="section-title">🌟 Member <span>Kehormatan</span> 🌟</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: #64748B; font-size: 18px;">Dapatkan diskon 20% setiap belanja untuk para member!</p>
+            <div class="ustadz-grid" id="ustadzGrid">
+                <!-- Data 5 Ustadz akan diisi oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- SECTION FITUR -->
         <div class="features-section" id="features">
             <h2 class="section-title">Layanan <span>Kami</span></h2>
             <div class="features-grid">
-                <div class="feature-card"><i class="fas fa-motorcycle"></i><h3>Pesan Antar</h3><p>Delivery langsung ke rumah Anda</p></div>
-                <div class="feature-card"><i class="fas fa-clock"></i><h3>Booking Antrian</h3><p>Hindari antrian panjang +Rp2000</p></div>
-                <div class="feature-card"><i class="fas fa-id-card"></i><h3>Membership</h3><p>Diskon 20% untuk member</p></div>
+                <div class="feature-card"><i class="fas fa-motorcycle"></i><h3>Pesan Antar</h3><p>Delivery langsung ke rumah Anda +Rp5000</p></div>
+                <div class="feature-card"><i class="fas fa-clock"></i><h3>Booking Antrian</h3><p>Hindari antrian panjang +Rp2000 (Biaya Jam Padat)</p></div>
+                <div class="feature-card"><i class="fas fa-id-card"></i><h3>Membership</h3><p>Diskon 20% untuk member khusus</p></div>
                 <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Tracking Order</h3><p>Pantau pesanan Anda</p></div>
             </div>
         </div>
@@ -200,7 +228,7 @@
                             <select id="orderType" style="width:100%; padding:12px; margin:10px 0; border-radius:12px; border:1px solid #E2E8F0;">
                                 <option value="dinein">Makan di Tempat</option>
                                 <option value="delivery">Pesan Antar (+Rp 5000)</option>
-                                <option value="queue">Booking Antrian (+Rp 2000)</option>
+                                <option value="queue">Booking Antrian (+Rp 2000) - Biaya Jam Padat</option>
                             </select>
                             <button class="btn-print" id="checkoutBtn"><i class="fas fa-shopping-cart"></i> Checkout</button>
                         </div>
@@ -210,33 +238,33 @@
 
             <!-- Pesan Antar -->
             <div id="deliveryPage" class="page-content">
-                <h2 style="margin-bottom:20px;">Pesan Antar</h2>
-                <button class="btn-add" id="showDeliveryFormBtn">+ Pesan Antar Baru</button>
+                <h2 style="margin-bottom:20px;">🚚 Pesan Antar</h2>
+                <button class="btn-add" id="showDeliveryFormBtn">+ Pesan Antar Baru (+Rp 5000)</button>
                 <div class="order-list" id="deliveryOrders"></div>
             </div>
 
             <!-- Booking Antrian -->
             <div id="queuePage" class="page-content">
-                <h2 style="margin-bottom:20px;">Booking Antrian</h2>
-                <button class="btn-add" id="showQueueFormBtn">+ Booking Antrian Baru</button>
+                <h2 style="margin-bottom:20px;">📅 Booking Antrian</h2>
+                <button class="btn-add" id="showQueueFormBtn">+ Booking Antrian Baru (+Rp 2000)</button>
                 <div class="order-list" id="queueOrders"></div>
             </div>
 
             <!-- Tracking Order -->
             <div id="trackingPage" class="page-content">
-                <h2 style="margin-bottom:20px;">Tracking Pesanan</h2>
+                <h2 style="margin-bottom:20px;">📍 Tracking Pesanan</h2>
                 <div id="trackingList" class="delivery-list"></div>
             </div>
 
             <!-- Riwayat -->
             <div id="historyPage" class="page-content">
-                <h2 style="margin-bottom:20px;">Riwayat Transaksi</h2>
+                <h2 style="margin-bottom:20px;">📋 Riwayat Transaksi</h2>
                 <div id="historyList" class="history-list"></div>
             </div>
 
             <!-- CMS Admin -->
             <div id="adminPage" class="page-content">
-                <h2 style="margin-bottom:20px;">CMS Admin - Kelola Menu</h2>
+                <h2 style="margin-bottom:20px;">⚙️ CMS Admin - Kelola Menu</h2>
                 <button class="btn-add" id="showAddMenuBtn"><i class="fas fa-plus"></i> Tambah Menu</button>
                 <button class="btn-add" id="refreshMenuBtn"><i class="fas fa-sync"></i> Refresh</button>
                 <div id="adminMenuList" class="menu-admin-list" style="margin-top:20px;"></div>
@@ -244,7 +272,7 @@
 
             <!-- Profil -->
             <div id="profilePage" class="page-content">
-                <h2 style="margin-bottom:20px;">Profil Saya</h2>
+                <h2 style="margin-bottom:20px;">👤 Profil Saya</h2>
                 <div style="background:white; border-radius:20px; padding:24px;">
                     <div class="input-group"><label>Nama Lengkap</label><input type="text" id="profileFullname" readonly></div>
                     <div class="input-group"><label>Username</label><input type="text" id="profileUsername" readonly></div>
@@ -265,7 +293,9 @@
                 <button class="btn-auth" id="authSubmitBtn">Login</button>
                 <div class="auth-switch" id="switchAuthMode">Belum punya akun? Register</div>
                 <div style="margin-top:15px; font-size:12px; text-align:center; color:#64748B;">
-                    Demo: admin/admin123 | ustadzahmad/member123
+                    <strong>Akun Member Ustadz:</strong><br>
+                    ustadzaliakbar / member123 | ustadznanang / member123<br>
+                    ustadzrois / member123 | ustadzaliwahyudi / member123 | ustadzzainur / member123
                 </div>
             </div>
         </div>
@@ -293,7 +323,7 @@
                 <div class="input-group"><label>Alamat Lengkap</label><input type="text" id="deliveryAddress" placeholder="Jl. Contoh No. 123"></div>
                 <div class="input-group"><label>No. Telepon</label><input type="text" id="deliveryPhone" placeholder="08123456789"></div>
                 <div class="input-group"><label>Catatan</label><textarea id="deliveryNote" rows="2" placeholder="Catatan untuk kurir..."></textarea></div>
-                <button class="btn-auth" id="submitDeliveryBtn">Pesan Antar</button>
+                <button class="btn-auth" id="submitDeliveryBtn">Pesan Antar (+Rp 5000)</button>
             </div>
         </div>
     </div>
@@ -306,6 +336,7 @@
                 <div class="input-group"><label>Tanggal</label><input type="date" id="queueDate"></div>
                 <div class="input-group"><label>Jam</label><input type="time" id="queueTime"></div>
                 <div class="input-group"><label>Jumlah Orang</label><input type="number" id="queuePeople" value="2"></div>
+                <div class="input-group"><label style="color:#FF6B35;">⚠️ Biaya Jam Padat</label><input type="text" value="+ Rp 2000" readonly style="background:#FEF3C7;"></div>
                 <button class="btn-auth" id="submitQueueBtn">Booking Sekarang (+Rp 2000)</button>
             </div>
         </div>
@@ -342,19 +373,19 @@
             { id: 10, name: "Pisang Goreng", category: "Snack", price: 12000, stock: true }
         ];
 
-        // 5 Member USTADZ
-        let memberUsers = [
-            { username: "ustadzahmad", password: "member123", name: "Ustadz Ahmad", isMember: true, discount: 20 },
-            { username: "ustadzbudi", password: "member123", name: "Ustadz Budi", isMember: true, discount: 20 },
-            { username: "ustadzcitra", password: "member123", name: "Ustadz Citra", isMember: true, discount: 20 },
-            { username: "ustadzdoni", password: "member123", name: "Ustadz Doni", isMember: true, discount: 20 },
-            { username: "ustadzeka", password: "member123", name: "Ustadz Eka", isMember: true, discount: 20 }
+        // ==================== 5 USTADZ MEMBER (SESUAI PERMINTAAN) ====================
+        const ustadzMembers = [
+            { id: 1, username: "ustadzaliakbar", password: "member123", name: "Ustadz Ali Akbar", title: "Ulama Kondang", discount: 20, bio: "Ahli tafsir dan hadits" },
+            { id: 2, username: "ustadznanang", password: "member123", name: "Ustadz Nanang", title: "Da'wah Aktif", discount: 20, bio: "Pendakwah milenial" },
+            { id: 3, username: "ustadzrois", password: "member123", name: "Ustadz Rois", title: "Ahli Fiqih", discount: 20, bio: "Pengajar di pondok pesantren" },
+            { id: 4, username: "ustadzaliwahyudi", password: "member123", name: "Ustadz Ali Wahyudi", title: "Hafidz Quran", discount: 20, bio: "Menghafal 30 juz" },
+            { id: 5, username: "ustadzzainur", password: "member123", name: "Ustadz Zainur Arifin", title: "Muballigh", discount: 20, bio: "Da'wah keliling Nusantara" }
         ];
 
         let users = JSON.parse(localStorage.getItem('users')) || [
             { username: "admin", password: "admin123", role: "admin", name: "Admin", isMember: false },
             { username: "kasir", password: "kasir123", role: "kasir", name: "Kasir", isMember: false },
-            ...memberUsers
+            ...ustadzMembers.map(u => ({ ...u, role: "user", isMember: true, memberDiscount: 20 }))
         ];
 
         let cart = [];
@@ -398,6 +429,52 @@
             if (element) element.scrollIntoView({ behavior: "smooth" });
         }
 
+        // ==================== RENDER 5 USTADZ DI LANDING PAGE ====================
+        function renderUstadzSection() {
+            const grid = document.getElementById("ustadzGrid");
+            if (grid) {
+                grid.innerHTML = ustadzMembers.map(ustadz => `
+                    <div class="ustadz-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>${ustadz.name}</h3>
+                        <div class="badge-member">⭐ Member Kehormatan ⭐</div>
+                        <div class="discount">${ustadz.discount}% OFF</div>
+                        <p><i class="fas fa-certificate"></i> ${ustadz.title}</p>
+                        <p><small>${ustadz.bio}</small></p>
+                        <button class="btn-member" onclick="loginAsMember('${ustadz.username}')">Login sebagai ${ustadz.name}</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Fungsi untuk login sebagai member ustadz
+        function loginAsMember(username) {
+            const user = users.find(u => u.username === username);
+            if (user) {
+                currentUser = user;
+                document.getElementById("profileName").textContent = user.name;
+                document.getElementById("profileRole").textContent = user.role === "admin" ? "Admin" : (user.isMember ? "Member Ustadz" : "User");
+                document.getElementById("profileImg").src = `https://ui-avatars.com/api/?background=FF6B35&color=fff&name=${user.name}`;
+                document.getElementById("profileFullname").value = user.name;
+                document.getElementById("profileUsername").value = user.username;
+                document.getElementById("profileMember").value = user.isMember ? "Member Ustadz (Diskon 20%)" : "Non Member";
+                document.getElementById("profileDiscount").value = user.isMember ? "20%" : "0%";
+                showToast(`Selamat datang ${user.name}! Anda mendapat diskon 20%`, "#10B981");
+                closeModal("authModal");
+                document.getElementById("landingPage").classList.add("hide");
+                document.getElementById("appContainer").classList.add("active");
+                
+                const adminNavs = document.querySelectorAll(".admin-only");
+                adminNavs.forEach(nav => {
+                    if (user.role === "admin") nav.style.display = "flex";
+                    else nav.style.display = "none";
+                });
+                renderCart();
+            } else {
+                showToast("Akun tidak ditemukan!", "#EF4444");
+            }
+        }
+
         // ==================== RENDER MENU LANDING ====================
         function renderMenuPreview() {
             const grid = document.getElementById("menuPreviewGrid");
@@ -423,9 +500,9 @@
             if (menuGrid) {
                 menuGrid.innerHTML = filtered.map(item => `
                     <div class="menu-card ${!item.stock ? 'out-of-stock' : ''}" data-id="${item.id}">
-                        <div class="badge-stock" style="font-size:12px; margin-bottom:8px;">${item.stock ? '✅ Tersedia' : '❌ Habis'}</div>
+                        <div style="font-size:12px; margin-bottom:8px;">${item.stock ? '✅ Tersedia' : '❌ Habis'}</div>
                         <h4>${item.name}</h4>
-                        <div class="price" style="margin-top:8px;">Rp ${formatRupiah(item.price)}</div>
+                        <div style="margin-top:8px; font-weight:700; color:#FF6B35;">Rp ${formatRupiah(item.price)}</div>
                     </div>
                 `).join('');
                 
@@ -543,6 +620,7 @@
                 subtotal, memberDiscount, tax, deliveryFee, queueFee, total,
                 type: orderType,
                 cashier: currentUser?.name,
+                isMember: currentUser?.isMember || false,
                 status: orderType === "delivery" ? "processing" : (orderType === "queue" ? "booked" : "completed"),
                 tracking: orderType === "delivery" ? [{ status: "Pesanan diterima", time: new Date().toLocaleString(), progress: 25 }] : []
             };
@@ -552,7 +630,7 @@
                 showToast("Pesanan antar berhasil! Silakan cek tracking.", "#10B981");
             } else if (orderType === "queue") {
                 queueOrders.unshift(order);
-                showToast("Booking antrian berhasil! Biaya antrian Rp 2000.", "#10B981");
+                showToast("Booking antrian berhasil! Biaya jam padat Rp 2000.", "#10B981");
             } else {
                 orders.unshift(order);
                 showToast("Transaksi berhasil!", "#10B981");
@@ -649,7 +727,7 @@
                 } else {
                     container.innerHTML = allOrders.slice(0, 30).map(order => `
                         <div class="history-item">
-                            <div><strong>#${order.id}</strong><br><small>${order.date}</small><br>${order.type === "delivery" ? "🚚 Pesan Antar" : (order.type === "queue" ? "📅 Booking Antrian" : "🍽️ Dine In")}</div>
+                            <div><strong>#${order.id}</strong><br><small>${order.date}</small><br>${order.type === "delivery" ? "🚚 Pesan Antar" : (order.type === "queue" ? "📅 Booking Antrian" : "🍽️ Dine In")} ${order.isMember ? '⭐ Member' : ''}</div>
                             <div><strong>Rp ${formatRupiah(order.total)}</strong></div>
                         </div>
                     `).join('');
@@ -666,7 +744,7 @@
         function submitDelivery() {
             const address = document.getElementById("deliveryAddress").value;
             if (!address) { showToast("Alamat harus diisi!", "#EF4444"); return; }
-            showToast("Pesanan antar berhasil! Kami akan segera proses.", "#10B981");
+            showToast("Pesanan antar berhasil! (+Rp 5000)", "#10B981");
             closeModal("deliveryModal");
             document.getElementById("deliveryAddress").value = "";
             document.getElementById("deliveryPhone").value = "";
@@ -683,7 +761,7 @@
         function submitQueue() {
             const date = document.getElementById("queueDate").value;
             if (!date) { showToast("Tanggal harus diisi!", "#EF4444"); return; }
-            showToast("Booking antrian berhasil! (+Rp 2000)", "#10B981");
+            showToast("Booking antrian berhasil! Biaya jam padat Rp 2000", "#10B981");
             closeModal("queueModal");
         }
 
@@ -718,7 +796,6 @@
             document.getElementById("menuModalTitle").textContent = "Tambah Menu Baru";
             document.getElementById("menuName").value = "";
             document.getElementById("menuPrice").value = "";
-            document.getElementById("menuNote").value = "";
             document.getElementById("saveMenuBtn").onclick = () => addMenuItem();
             document.getElementById("menuModal").style.display = "block";
         }
@@ -807,11 +884,11 @@
                 if (user) {
                     currentUser = user;
                     document.getElementById("profileName").textContent = user.name;
-                    document.getElementById("profileRole").textContent = user.role === "admin" ? "Admin" : (user.isMember ? "Member" : "User");
+                    document.getElementById("profileRole").textContent = user.role === "admin" ? "Admin" : (user.isMember ? "Member Ustadz" : "User");
                     document.getElementById("profileImg").src = `https://ui-avatars.com/api/?background=FF6B35&color=fff&name=${user.name}`;
                     document.getElementById("profileFullname").value = user.name;
                     document.getElementById("profileUsername").value = user.username;
-                    document.getElementById("profileMember").value = user.isMember ? "Member Aktif (Diskon 20%)" : "Non Member";
+                    document.getElementById("profileMember").value = user.isMember ? "Member Ustadz (Diskon 20%)" : "Non Member";
                     document.getElementById("profileDiscount").value = user.isMember ? "20%" : "0%";
                     showToast(`Selamat datang ${user.name}!`);
                     closeModal("authModal");
@@ -823,7 +900,6 @@
                         if (user.role === "admin") nav.style.display = "flex";
                         else nav.style.display = "none";
                     });
-                    
                     renderCart();
                 } else {
                     showToast("Username atau password salah!", "#EF4444");
@@ -870,7 +946,7 @@
             if (pageId === "profile" && currentUser) {
                 document.getElementById("profileFullname").value = currentUser.name;
                 document.getElementById("profileUsername").value = currentUser.username;
-                document.getElementById("profileMember").value = currentUser.isMember ? "Member Aktif (Diskon 20%)" : "Non Member";
+                document.getElementById("profileMember").value = currentUser.isMember ? "Member Ustadz (Diskon 20%)" : "Non Member";
                 document.getElementById("profileDiscount").value = currentUser.isMember ? "20%" : "0%";
             }
         }
@@ -919,8 +995,10 @@
         window.showAuthModal = showAuthModal;
         window.closeModal = closeModal;
         window.updateTrackingStatus = updateTrackingStatus;
+        window.loginAsMember = loginAsMember;
 
         // ==================== INITIALIZE ====================
+        renderUstadzSection();
         renderMenuPreview();
         renderMenu();
         renderCart();
