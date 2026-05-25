@@ -34,12 +34,12 @@
         .section-title { text-align: center; font-size: 36px; font-weight: 700; margin-bottom: 50px; }
         .section-title span { color: #FF6B35; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .feature-card { background: white; padding: 30px; border-radius: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.3s; }
+        .feature-card { background: white; padding: 30px; border-radius: 24px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; }
         .feature-card:hover { transform: translateY(-10px); }
         .feature-card i { font-size: 48px; color: #FF6B35; margin-bottom: 20px; }
         .menu-section-home { padding: 80px 50px; background: white; }
         .menu-grid-home { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .menu-card-home { background: #F8FAFC; border-radius: 20px; padding: 20px; text-align: center; transition: 0.3s; }
+        .menu-card-home { background: #F8FAFC; border-radius: 20px; padding: 20px; text-align: center; transition: 0.3s; cursor: pointer; }
         .menu-card-home:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .menu-card-home h3 { margin: 15px 0 10px; }
         .price { color: #FF6B35; font-size: 24px; font-weight: 700; }
@@ -72,12 +72,13 @@
         .cart-items { max-height: 400px; overflow-y: auto; margin-bottom: 20px; }
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
         .cart-item-actions { display: flex; gap: 8px; align-items: center; }
-        .qty-btn { background: #F1F5F9; border: none; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; }
-        .remove-item { color: #EF4444; background: none; border: none; cursor: pointer; }
+        .qty-btn { background: #F1F5F9; border: none; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .remove-item { color: #EF4444; background: none; border: none; cursor: pointer; font-size: 16px; }
         .cart-summary { border-top: 2px solid #F1F5F9; padding-top: 16px; }
         .summary-row { display: flex; justify-content: space-between; margin-bottom: 12px; }
         .summary-row.total { font-weight: 800; font-size: 20px; }
         .btn-print { width: 100%; background: #FF6B35; color: white; border: none; padding: 14px; border-radius: 40px; font-weight: 700; cursor: pointer; margin-top: 16px; }
+        .btn-add { background: #FF6B35; color: white; border: none; padding: 12px 24px; border-radius: 40px; font-weight: 600; cursor: pointer; margin-bottom: 20px; }
 
         /* Modal */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); }
@@ -87,7 +88,7 @@
         .modal-body { padding: 24px; }
         .input-group { margin-bottom: 18px; }
         .input-group label { display: block; margin-bottom: 6px; font-weight: 500; }
-        .input-group input, .input-group select { width: 100%; padding: 12px 14px; border: 1.5px solid #E2E8F0; border-radius: 12px; }
+        .input-group input, .input-group select, .input-group textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #E2E8F0; border-radius: 12px; }
         .btn-auth { width: 100%; background: #FF6B35; color: white; border: none; padding: 14px; border-radius: 40px; font-weight: 700; cursor: pointer; margin-top: 12px; }
         .auth-switch { text-align: center; margin-top: 20px; font-size: 14px; color: #64748B; cursor: pointer; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1E293B; color: white; padding: 12px 24px; border-radius: 40px; z-index: 1000; opacity: 0; transition: 0.2s; pointer-events: none; }
@@ -98,16 +99,23 @@
         .stat-card { background: white; padding: 20px; border-radius: 20px; }
         .stat-card .value { font-size: 28px; font-weight: 700; color: #FF6B35; }
         .history-list, .order-list, .delivery-list { background: white; border-radius: 20px; padding: 20px; }
-        .history-item, .order-item, .delivery-item { padding: 15px; border-bottom: 1px solid #F1F5F9; display: flex; justify-content: space-between; align-items: center; }
+        .history-item, .order-item, .delivery-item { padding: 15px; border-bottom: 1px solid #F1F5F9; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         .badge-pending { background: #FEF3C7; color: #D97706; }
         .badge-delivered { background: #D1FAE5; color: #059669; }
         .badge-processing { background: #DBEAFE; color: #2563EB; }
-        .tracking-progress { display: flex; align-items: center; justify-content: space-between; margin: 20px 0; }
-        .tracking-step { text-align: center; flex: 1; }
+        .tracking-progress { display: flex; align-items: center; justify-content: space-between; margin: 20px 0; flex-wrap: wrap; }
+        .tracking-step { text-align: center; flex: 1; min-width: 80px; }
         .tracking-step.active .step-icon { background: #FF6B35; color: white; }
         .step-icon { width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
-        @media (max-width: 1100px) { .pos-layout { flex-direction: column; } .sidebar { width: 80px; } .sidebar .logo span, .sidebar .nav-item span, .profile-info { display: none; } .main-content { margin-left: 80px; } .hero-section { flex-direction: column; text-align: center; } }
+        .search-header { display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .search-box { background: white; display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-radius: 48px; flex: 1; max-width: 360px; }
+        .search-box input { border: none; outline: none; flex: 1; }
+        .category-tabs { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+        .cat-tab { background: white; border: none; padding: 10px 24px; border-radius: 40px; font-weight: 600; cursor: pointer; }
+        .cat-tab.active { background: #FF6B35; color: white; }
+        .member-badge { background: #FF6B35; color: white; padding: 8px 16px; border-radius: 40px; font-size: 14px; }
+        @media (max-width: 1100px) { .pos-layout { flex-direction: column; } .sidebar { width: 80px; } .sidebar .logo span, .sidebar .nav-item span, .profile-info { display: none; } .main-content { margin-left: 80px; } .hero-section { flex-direction: column; text-align: center; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -117,10 +125,9 @@
             <div class="logo-landing"><i class="fas fa-utensils"></i><span>Cheseto Restaurant</span></div>
             <div class="nav-links">
                 <a onclick="scrollToSection('home')">Home</a>
-                <a onclick="scrollToSection('menu')">Menu</a>
+                <a onclick="scrollToSection('menuSection')">Menu</a>
                 <a onclick="scrollToSection('features')">Fitur</a>
-                <a onclick="showAuthModal()">Login</a>
-                <button class="btn-login-nav" onclick="showAuthModal()">Mulai</button>
+                <button class="btn-login-nav" onclick="showAuthModal()">Login</button>
             </div>
         </nav>
         <div class="hero-section" id="home">
@@ -129,12 +136,12 @@
                 <p>Cheseto POS menyediakan layanan pesan antar, booking antrian, dan membership dengan diskon spesial!</p>
                 <div class="hero-buttons">
                     <button class="btn-primary" onclick="showAuthModal()">Pesan Sekarang</button>
-                    <button class="btn-outline" onclick="scrollToSection('menu')">Lihat Menu</button>
+                    <button class="btn-outline" onclick="scrollToSection('menuSection')">Lihat Menu</button>
                 </div>
             </div>
             <div class="hero-image"><i class="fas fa-hamburger"></i></div>
         </div>
-        <div class="menu-section-home" id="menu">
+        <div class="menu-section-home" id="menuSection">
             <h2 class="section-title">Menu <span>Spesial</span></h2>
             <div class="menu-grid-home" id="menuPreviewGrid"></div>
         </div>
@@ -142,7 +149,7 @@
             <h2 class="section-title">Layanan <span>Kami</span></h2>
             <div class="features-grid">
                 <div class="feature-card"><i class="fas fa-motorcycle"></i><h3>Pesan Antar</h3><p>Delivery langsung ke rumah Anda</p></div>
-                <div class="feature-card"><i class="fas fa-clock"></i><h3>Booking Antrian</h3><p>Hindari antrian panjang</p></div>
+                <div class="feature-card"><i class="fas fa-clock"></i><h3>Booking Antrian</h3><p>Hindari antrian panjang +Rp2000</p></div>
                 <div class="feature-card"><i class="fas fa-id-card"></i><h3>Membership</h3><p>Diskon 20% untuk member</p></div>
                 <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Tracking Order</h3><p>Pantau pesanan Anda</p></div>
             </div>
@@ -170,11 +177,11 @@
         <main class="main-content">
             <!-- POS Transaksi -->
             <div id="homePage" class="page-content active-page">
-                <div class="search-header" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                <div class="search-header">
                     <div class="search-box"><i class="fas fa-search"></i><input type="text" placeholder="Cari menu..." id="searchInput"></div>
-                    <div class="stock-warning" id="memberBadge" style="background: #FF6B35; color: white;"></div>
+                    <div class="member-badge" id="memberBadge" style="display:none;"><i class="fas fa-crown"></i> Member Diskon 20%</div>
                 </div>
-                <div class="category-tabs" id="categoryTabs" style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+                <div class="category-tabs" id="categoryTabs">
                     <button class="cat-tab active" data-cat="all">Semua</button>
                     <button class="cat-tab" data-cat="Makanan">Makanan</button>
                     <button class="cat-tab" data-cat="Minuman">Minuman</button>
@@ -203,42 +210,42 @@
 
             <!-- Pesan Antar -->
             <div id="deliveryPage" class="page-content">
-                <h2>Pesan Antar</h2>
+                <h2 style="margin-bottom:20px;">Pesan Antar</h2>
+                <button class="btn-add" id="showDeliveryFormBtn">+ Pesan Antar Baru</button>
                 <div class="order-list" id="deliveryOrders"></div>
-                <button class="btn-add" onclick="showDeliveryForm()" style="margin-top:20px;">+ Pesan Antar Baru</button>
             </div>
 
             <!-- Booking Antrian -->
             <div id="queuePage" class="page-content">
-                <h2>Booking Antrian</h2>
+                <h2 style="margin-bottom:20px;">Booking Antrian</h2>
+                <button class="btn-add" id="showQueueFormBtn">+ Booking Antrian Baru</button>
                 <div class="order-list" id="queueOrders"></div>
-                <button class="btn-add" onclick="showQueueForm()" style="margin-top:20px;">+ Booking Antrian</button>
             </div>
 
             <!-- Tracking Order -->
             <div id="trackingPage" class="page-content">
-                <h2>Tracking Pesanan</h2>
+                <h2 style="margin-bottom:20px;">Tracking Pesanan</h2>
                 <div id="trackingList" class="delivery-list"></div>
             </div>
 
             <!-- Riwayat -->
             <div id="historyPage" class="page-content">
-                <h2>Riwayat Transaksi</h2>
+                <h2 style="margin-bottom:20px;">Riwayat Transaksi</h2>
                 <div id="historyList" class="history-list"></div>
             </div>
 
             <!-- CMS Admin -->
             <div id="adminPage" class="page-content">
-                <h2>CMS Admin - Kelola Menu</h2>
+                <h2 style="margin-bottom:20px;">CMS Admin - Kelola Menu</h2>
                 <button class="btn-add" id="showAddMenuBtn"><i class="fas fa-plus"></i> Tambah Menu</button>
-                <button class="btn-add" onclick="loadMenuCMS()"><i class="fas fa-sync"></i> Refresh</button>
+                <button class="btn-add" id="refreshMenuBtn"><i class="fas fa-sync"></i> Refresh</button>
                 <div id="adminMenuList" class="menu-admin-list" style="margin-top:20px;"></div>
             </div>
 
             <!-- Profil -->
             <div id="profilePage" class="page-content">
-                <h2>Profil Saya</h2>
-                <div class="settings-form" style="background:white; border-radius:20px; padding:24px;">
+                <h2 style="margin-bottom:20px;">Profil Saya</h2>
+                <div style="background:white; border-radius:20px; padding:24px;">
                     <div class="input-group"><label>Nama Lengkap</label><input type="text" id="profileFullname" readonly></div>
                     <div class="input-group"><label>Username</label><input type="text" id="profileUsername" readonly></div>
                     <div class="input-group"><label>Status Member</label><input type="text" id="profileMember" readonly></div>
@@ -251,12 +258,29 @@
     <!-- Login Modal -->
     <div id="authModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header"><h2 id="modalTitle">Login</h2><span class="close-modal">&times;</span></div>
+            <div class="modal-header"><h2 id="modalTitle">Login</h2><span class="close-modal" onclick="closeModal('authModal')">&times;</span></div>
             <div class="modal-body">
-                <div class="input-group"><label>Username</label><input type="text" id="loginUsername"></div>
-                <div class="input-group"><label>Password</label><input type="password" id="loginPassword"></div>
+                <div class="input-group"><label>Username</label><input type="text" id="loginUsername" placeholder="Masukkan username"></div>
+                <div class="input-group"><label>Password</label><input type="password" id="loginPassword" placeholder="Masukkan password"></div>
                 <button class="btn-auth" id="authSubmitBtn">Login</button>
                 <div class="auth-switch" id="switchAuthMode">Belum punya akun? Register</div>
+                <div style="margin-top:15px; font-size:12px; text-align:center; color:#64748B;">
+                    Demo: admin/admin123 | ustadzahmad/member123
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirm Modal -->
+    <div id="logoutConfirmModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>Konfirmasi Logout</h2><span class="close-modal" onclick="closeModal('logoutConfirmModal')">&times;</span></div>
+            <div class="modal-body">
+                <p>Yakin ingin logout?</p>
+                <div style="display: flex; gap: 12px; margin-top: 20px;">
+                    <button style="flex:1; padding:12px; border-radius:12px; border:none; cursor:pointer;" class="confirm-no" onclick="closeModal('logoutConfirmModal')">Batal</button>
+                    <button style="flex:1; padding:12px; border-radius:12px; border:none; cursor:pointer; background:#EF4444; color:white;" id="confirmLogoutBtn">Logout</button>
+                </div>
             </div>
         </div>
     </div>
@@ -287,7 +311,7 @@
         </div>
     </div>
 
-    <!-- Add Menu Modal -->
+    <!-- Add/Edit Menu Modal -->
     <div id="menuModal" class="modal">
         <div class="modal-content">
             <div class="modal-header"><h2 id="menuModalTitle">Tambah Menu</h2><span class="close-modal" onclick="closeModal('menuModal')">&times;</span></div>
@@ -318,21 +342,19 @@
             { id: 10, name: "Pisang Goreng", category: "Snack", price: 12000, stock: true }
         ];
 
-        // 5 Data Member (USTADZ)
-        let members = [
-            { id: 1, username: "ustadzahmad", name: "Ustadz Ahmad", memberType: "Gold", discount: 20 },
-            { id: 2, username: "ustadzbudi", name: "Ustadz Budi", memberType: "Gold", discount: 20 },
-            { id: 3, username: "ustadzcitra", name: "Ustadz Citra", memberType: "Gold", discount: 20 },
-            { id: 4, username: "ustadzdoni", name: "Ustadz Doni", memberType: "Gold", discount: 20 },
-            { id: 5, username: "ustadzeka", name: "Ustadz Eka", memberType: "Gold", discount: 20 }
+        // 5 Member USTADZ
+        let memberUsers = [
+            { username: "ustadzahmad", password: "member123", name: "Ustadz Ahmad", isMember: true, discount: 20 },
+            { username: "ustadzbudi", password: "member123", name: "Ustadz Budi", isMember: true, discount: 20 },
+            { username: "ustadzcitra", password: "member123", name: "Ustadz Citra", isMember: true, discount: 20 },
+            { username: "ustadzdoni", password: "member123", name: "Ustadz Doni", isMember: true, discount: 20 },
+            { username: "ustadzeka", password: "member123", name: "Ustadz Eka", isMember: true, discount: 20 }
         ];
 
         let users = JSON.parse(localStorage.getItem('users')) || [
             { username: "admin", password: "admin123", role: "admin", name: "Admin", isMember: false },
             { username: "kasir", password: "kasir123", role: "kasir", name: "Kasir", isMember: false },
-            { username: "ustadzahmad", password: "member123", role: "user", name: "Ustadz Ahmad", isMember: true, memberDiscount: 20 },
-            { username: "ustadzbudi", password: "member123", role: "user", name: "Ustadz Budi", isMember: true, memberDiscount: 20 },
-            { username: "ustadzcitra", password: "member123", role: "user", name: "Ustadz Citra", isMember: true, memberDiscount: 20 }
+            ...memberUsers
         ];
 
         let cart = [];
@@ -340,12 +362,9 @@
         let authMode = "login";
         let currentCategory = "all";
         let searchQuery = "";
-        
-        // Orders: dine-in, delivery, queue
         let orders = JSON.parse(localStorage.getItem('orders')) || [];
         let deliveryOrders = JSON.parse(localStorage.getItem('deliveryOrders')) || [];
         let queueOrders = JSON.parse(localStorage.getItem('queueOrders')) || [];
-        let settings = { taxRate: 10 };
 
         const savedMenu = localStorage.getItem('menuData');
         if (savedMenu) menuData = JSON.parse(savedMenu);
@@ -369,9 +388,17 @@
             setTimeout(() => toast.classList.remove("show"), 2000);
         }
 
-        function closeModal(modalId) { document.getElementById(modalId).style.display = "none"; }
+        function closeModal(modalId) { 
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = "none";
+        }
 
-        // ==================== RENDER MENU DI LANDING PAGE ====================
+        function scrollToSection(section) {
+            const element = document.getElementById(section);
+            if (element) element.scrollIntoView({ behavior: "smooth" });
+        }
+
+        // ==================== RENDER MENU LANDING ====================
         function renderMenuPreview() {
             const grid = document.getElementById("menuPreviewGrid");
             if (grid) {
@@ -392,16 +419,16 @@
                 const matchSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
                 return matchCat && matchSearch;
             });
-            document.getElementById("menuResultCount") && (document.getElementById("menuResultCount").textContent = filtered.length);
             const menuGrid = document.getElementById("menuGrid");
             if (menuGrid) {
                 menuGrid.innerHTML = filtered.map(item => `
                     <div class="menu-card ${!item.stock ? 'out-of-stock' : ''}" data-id="${item.id}">
-                        <div class="badge-stock">${item.stock ? 'Tersedia' : 'Habis'}</div>
+                        <div class="badge-stock" style="font-size:12px; margin-bottom:8px;">${item.stock ? '✅ Tersedia' : '❌ Habis'}</div>
                         <h4>${item.name}</h4>
-                        <div class="price">Rp ${formatRupiah(item.price)}</div>
+                        <div class="price" style="margin-top:8px;">Rp ${formatRupiah(item.price)}</div>
                     </div>
                 `).join('');
+                
                 document.querySelectorAll('.menu-card').forEach(card => {
                     card.addEventListener('click', () => {
                         const id = parseInt(card.dataset.id);
@@ -413,48 +440,57 @@
             }
         }
 
-        // ==================== CART ====================
+        // ==================== CART FUNCTIONS ====================
         function addToCart(item) {
             const existing = cart.find(c => c.id === item.id);
             if (existing) existing.quantity++;
             else cart.push({ ...item, quantity: 1 });
             renderCart();
-            showToast(`${item.name} ditambahkan`);
+            showToast(`${item.name} ditambahkan ke keranjang`);
         }
 
         function renderCart() {
             const container = document.getElementById("cartItems");
+            if (!container) return;
+            
             if (cart.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:40px;">Belum ada pesanan</div>`;
+                container.innerHTML = `<div style="text-align:center; padding:40px; color:#94A3B8;">Belum ada pesanan</div>`;
             } else {
                 container.innerHTML = cart.map((item, idx) => `
                     <div class="cart-item">
-                        <div><strong>${item.name}</strong><br>Rp ${formatRupiah(item.price)}</div>
+                        <div style="flex:2;"><strong>${item.name}</strong><br><small>Rp ${formatRupiah(item.price)}</small></div>
                         <div class="cart-item-actions">
                             <button class="qty-btn dec-qty" data-idx="${idx}">-</button>
-                            <span>${item.quantity}</span>
+                            <span style="min-width:30px; text-align:center;">${item.quantity}</span>
                             <button class="qty-btn inc-qty" data-idx="${idx}">+</button>
                             <button class="remove-item" data-idx="${idx}"><i class="fas fa-trash"></i></button>
                         </div>
-                        <div>Rp ${formatRupiah(item.price * item.quantity)}</div>
+                        <div style="min-width:80px; text-align:right;">Rp ${formatRupiah(item.price * item.quantity)}</div>
                     </div>
                 `).join('');
-                document.querySelectorAll('.dec-qty').forEach(btn => btn.addEventListener('click', (e) => {
-                    const idx = parseInt(btn.dataset.idx);
-                    if (cart[idx].quantity > 1) cart[idx].quantity--;
-                    else cart.splice(idx, 1);
-                    renderCart();
-                }));
-                document.querySelectorAll('.inc-qty').forEach(btn => btn.addEventListener('click', (e) => {
-                    const idx = parseInt(btn.dataset.idx);
-                    cart[idx].quantity++;
-                    renderCart();
-                }));
-                document.querySelectorAll('.remove-item').forEach(btn => btn.addEventListener('click', (e) => {
-                    const idx = parseInt(btn.dataset.idx);
-                    cart.splice(idx, 1);
-                    renderCart();
-                }));
+                
+                document.querySelectorAll('.dec-qty').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = parseInt(btn.dataset.idx);
+                        if (cart[idx].quantity > 1) cart[idx].quantity--;
+                        else cart.splice(idx, 1);
+                        renderCart();
+                    });
+                });
+                document.querySelectorAll('.inc-qty').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = parseInt(btn.dataset.idx);
+                        cart[idx].quantity++;
+                        renderCart();
+                    });
+                });
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = parseInt(btn.dataset.idx);
+                        cart.splice(idx, 1);
+                        renderCart();
+                    });
+                });
             }
             updateCartSummary();
         }
@@ -466,10 +502,10 @@
                 memberDiscount = subtotal * 0.2;
                 document.getElementById("discountRow").style.display = "flex";
                 document.getElementById("discountAmount").textContent = formatRupiah(memberDiscount);
-                document.getElementById("memberBadge").innerHTML = '<i class="fas fa-crown"></i> Member Diskon 20%';
+                document.getElementById("memberBadge").style.display = "flex";
             } else {
                 document.getElementById("discountRow").style.display = "none";
-                document.getElementById("memberBadge").innerHTML = '';
+                document.getElementById("memberBadge").style.display = "none";
             }
             let afterDiscount = subtotal - memberDiscount;
             let tax = afterDiscount * 0.1;
@@ -480,8 +516,17 @@
         }
 
         // ==================== CHECKOUT ====================
-        document.getElementById("checkoutBtn")?.addEventListener("click", () => {
-            if (cart.length === 0) { showToast("Keranjang kosong!", "#EF4444"); return; }
+        function checkout() {
+            if (cart.length === 0) { 
+                showToast("Keranjang kosong!", "#EF4444"); 
+                return; 
+            }
+            if (!currentUser) {
+                showToast("Silakan login terlebih dahulu!", "#EF4444");
+                showAuthModal();
+                return;
+            }
+            
             const orderType = document.getElementById("orderType").value;
             let subtotal = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
             let memberDiscount = (currentUser && currentUser.isMember) ? subtotal * 0.2 : 0;
@@ -519,75 +564,61 @@
             updateDeliveryPage();
             updateQueuePage();
             updateTrackingPage();
-        });
+        }
 
-        // ==================== DELIVERY ====================
+        // ==================== PAGE UPDATES ====================
         function updateDeliveryPage() {
             const container = document.getElementById("deliveryOrders");
             if (container) {
-                container.innerHTML = deliveryOrders.map(order => `
-                    <div class="order-item">
-                        <div><strong>Order #${order.id}</strong><br><small>${order.date}</small><br>Total: Rp ${formatRupiah(order.total)}</div>
-                        <span class="badge badge-processing">${order.status === "processing" ? "Diproses" : "Selesai"}</span>
-                    </div>
-                `).join('') || '<div style="text-align:center; padding:20px;">Belum ada pesanan antar</div>';
+                if (deliveryOrders.length === 0) {
+                    container.innerHTML = '<div style="text-align:center; padding:20px;">Belum ada pesanan antar</div>';
+                } else {
+                    container.innerHTML = deliveryOrders.map(order => `
+                        <div class="order-item">
+                            <div><strong>Order #${order.id}</strong><br><small>${order.date}</small><br>Total: Rp ${formatRupiah(order.total)}</div>
+                            <span class="badge badge-processing">${order.status === "processing" ? "Diproses" : "Selesai"}</span>
+                        </div>
+                    `).join('');
+                }
             }
         }
 
-        function showDeliveryForm() {
-            if (!currentUser) { showToast("Login dulu!", "#EF4444"); showAuthModal(); return; }
-            document.getElementById("deliveryModal").style.display = "block";
-            document.getElementById("submitDeliveryBtn").onclick = () => {
-                const address = document.getElementById("deliveryAddress").value;
-                if (!address) { showToast("Alamat harus diisi!", "#EF4444"); return; }
-                showToast("Pesanan antar berhasil! Kami akan segera proses.", "#10B981");
-                closeModal("deliveryModal");
-                document.getElementById("deliveryAddress").value = "";
-            };
-        }
-
-        // ==================== QUEUE ====================
         function updateQueuePage() {
             const container = document.getElementById("queueOrders");
             if (container) {
-                container.innerHTML = queueOrders.map(order => `
-                    <div class="order-item">
-                        <div><strong>Booking #${order.id}</strong><br><small>${order.date}</small><br>Total: Rp ${formatRupiah(order.total)}</div>
-                        <span class="badge badge-pending">Menunggu</span>
-                    </div>
-                `).join('') || '<div style="text-align:center; padding:20px;">Belum ada booking antrian</div>';
+                if (queueOrders.length === 0) {
+                    container.innerHTML = '<div style="text-align:center; padding:20px;">Belum ada booking antrian</div>';
+                } else {
+                    container.innerHTML = queueOrders.map(order => `
+                        <div class="order-item">
+                            <div><strong>Booking #${order.id}</strong><br><small>${order.date}</small><br>Total: Rp ${formatRupiah(order.total)}</div>
+                            <span class="badge badge-pending">Menunggu</span>
+                        </div>
+                    `).join('');
+                }
             }
         }
 
-        function showQueueForm() {
-            if (!currentUser) { showToast("Login dulu!", "#EF4444"); showAuthModal(); return; }
-            document.getElementById("queueModal").style.display = "block";
-            document.getElementById("queueDate").valueAsDate = new Date();
-            document.getElementById("queueTime").value = "19:00";
-            document.getElementById("submitQueueBtn").onclick = () => {
-                const date = document.getElementById("queueDate").value;
-                if (!date) { showToast("Tanggal harus diisi!", "#EF4444"); return; }
-                showToast("Booking antrian berhasil! (+Rp 2000)", "#10B981");
-                closeModal("queueModal");
-            };
-        }
-
-        // ==================== TRACKING ====================
         function updateTrackingPage() {
             const container = document.getElementById("trackingList");
             if (container) {
-                container.innerHTML = deliveryOrders.filter(o => o.status === "processing").map(order => `
-                    <div class="delivery-item">
-                        <div><strong>Order #${order.id}</strong><br><small>${order.date}</small></div>
-                        <div class="tracking-progress">
-                            <div class="tracking-step active"><div class="step-icon"><i class="fas fa-receipt"></i></div><small>Diterima</small></div>
-                            <div class="tracking-step ${order.tracking[0]?.progress >= 50 ? 'active' : ''}"><div class="step-icon"><i class="fas fa-utensils"></i></div><small>Dimasak</small></div>
-                            <div class="tracking-step"><div class="step-icon"><i class="fas fa-motorcycle"></i></div><small>Diantar</small></div>
-                            <div class="tracking-step"><div class="step-icon"><i class="fas fa-home"></i></div><small>Selesai</small></div>
+                const activeDeliveries = deliveryOrders.filter(o => o.status === "processing");
+                if (activeDeliveries.length === 0) {
+                    container.innerHTML = '<div style="text-align:center; padding:20px;">Tidak ada pesanan dalam pengiriman</div>';
+                } else {
+                    container.innerHTML = activeDeliveries.map(order => `
+                        <div class="delivery-item">
+                            <div><strong>Order #${order.id}</strong><br><small>${order.date}</small></div>
+                            <div class="tracking-progress">
+                                <div class="tracking-step ${order.tracking[0]?.progress >= 25 ? 'active' : ''}"><div class="step-icon"><i class="fas fa-receipt"></i></div><small>Diterima</small></div>
+                                <div class="tracking-step ${order.tracking[0]?.progress >= 50 ? 'active' : ''}"><div class="step-icon"><i class="fas fa-utensils"></i></div><small>Dimasak</small></div>
+                                <div class="tracking-step ${order.tracking[0]?.progress >= 75 ? 'active' : ''}"><div class="step-icon"><i class="fas fa-motorcycle"></i></div><small>Diantar</small></div>
+                                <div class="tracking-step ${order.tracking[0]?.progress >= 100 ? 'active' : ''}"><div class="step-icon"><i class="fas fa-home"></i></div><small>Selesai</small></div>
+                            </div>
+                            <button class="btn-add" style="margin-top:10px;" onclick="updateTrackingStatus(${order.id})">Update Status</button>
                         </div>
-                        <button class="btn-add" style="margin-top:10px;" onclick="updateTrackingStatus(${order.id})">Update Status</button>
-                    </div>
-                `).join('') || '<div style="text-align:center; padding:20px;">Tidak ada pesanan dalam pengiriman</div>';
+                    `).join('');
+                }
             }
         }
 
@@ -603,41 +634,91 @@
                     saveData();
                     updateTrackingPage();
                     showToast(`Status diperbarui: ${statusText}`, "#10B981");
+                } else {
+                    showToast("Pesanan sudah selesai!", "#FF6B35");
                 }
             }
         }
 
-        // ==================== HISTORY ====================
         function updateHistoryPage() {
             const container = document.getElementById("historyList");
-            const allOrders = [...orders, ...deliveryOrders, ...queueOrders].sort((a,b) => b.id - a.id);
-            container.innerHTML = allOrders.slice(0, 30).map(order => `
-                <div class="history-item">
-                    <div><strong>#${order.id}</strong><br><small>${order.date}</small><br>${order.type === "delivery" ? "🚚 Pesan Antar" : (order.type === "queue" ? "📅 Booking" : "🍽️ Dine In")}</div>
-                    <div><strong>Rp ${formatRupiah(order.total)}</strong></div>
-                </div>
-            `).join('') || '<div style="text-align:center; padding:20px;">Belum ada transaksi</div>';
+            if (container) {
+                const allOrders = [...orders, ...deliveryOrders, ...queueOrders].sort((a,b) => b.id - a.id);
+                if (allOrders.length === 0) {
+                    container.innerHTML = '<div style="text-align:center; padding:20px;">Belum ada transaksi</div>';
+                } else {
+                    container.innerHTML = allOrders.slice(0, 30).map(order => `
+                        <div class="history-item">
+                            <div><strong>#${order.id}</strong><br><small>${order.date}</small><br>${order.type === "delivery" ? "🚚 Pesan Antar" : (order.type === "queue" ? "📅 Booking Antrian" : "🍽️ Dine In")}</div>
+                            <div><strong>Rp ${formatRupiah(order.total)}</strong></div>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        // ==================== DELIVERY & QUEUE FORM ====================
+        function showDeliveryForm() {
+            if (!currentUser) { showToast("Login dulu!", "#EF4444"); showAuthModal(); return; }
+            document.getElementById("deliveryModal").style.display = "block";
+        }
+
+        function submitDelivery() {
+            const address = document.getElementById("deliveryAddress").value;
+            if (!address) { showToast("Alamat harus diisi!", "#EF4444"); return; }
+            showToast("Pesanan antar berhasil! Kami akan segera proses.", "#10B981");
+            closeModal("deliveryModal");
+            document.getElementById("deliveryAddress").value = "";
+            document.getElementById("deliveryPhone").value = "";
+            document.getElementById("deliveryNote").value = "";
+        }
+
+        function showQueueForm() {
+            if (!currentUser) { showToast("Login dulu!", "#EF4444"); showAuthModal(); return; }
+            document.getElementById("queueModal").style.display = "block";
+            document.getElementById("queueDate").valueAsDate = new Date();
+            document.getElementById("queueTime").value = "19:00";
+        }
+
+        function submitQueue() {
+            const date = document.getElementById("queueDate").value;
+            if (!date) { showToast("Tanggal harus diisi!", "#EF4444"); return; }
+            showToast("Booking antrian berhasil! (+Rp 2000)", "#10B981");
+            closeModal("queueModal");
         }
 
         // ==================== CMS ADMIN ====================
         function loadMenuCMS() {
             const container = document.getElementById("adminMenuList");
-            container.innerHTML = menuData.map((item, idx) => `
-                <div class="menu-admin-item" style="display:flex; justify-content:space-between; padding:15px; border-bottom:1px solid #E2E8F0;">
-                    <div><strong>${item.name}</strong><br><small>${item.category} | Rp ${formatRupiah(item.price)} | ${item.stock ? '✅' : '❌'}</small></div>
-                    <div>
-                        <button class="icon-btn edit" onclick="editMenuItem(${idx})" style="background:none; border:none; cursor:pointer; margin-right:10px;"><i class="fas fa-edit"></i></button>
-                        <button class="icon-btn delete" onclick="deleteMenuItem(${idx})" style="background:none; border:none; cursor:pointer;"><i class="fas fa-trash"></i></button>
+            if (container) {
+                container.innerHTML = menuData.map((item, idx) => `
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:15px; border-bottom:1px solid #E2E8F0;">
+                        <div><strong>${item.name}</strong><br><small>${item.category} | Rp ${formatRupiah(item.price)} | ${item.stock ? '✅ Tersedia' : '❌ Habis'}</small></div>
+                        <div>
+                            <button class="edit-menu-btn" data-idx="${idx}" style="background:#E0F2FE; border:none; padding:8px 16px; border-radius:8px; margin-right:8px; cursor:pointer;"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="delete-menu-btn" data-idx="${idx}" style="background:#FEE2E2; border:none; padding:8px 16px; border-radius:8px; cursor:pointer;"><i class="fas fa-trash"></i> Hapus</button>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `).join('');
+                
+                document.querySelectorAll('.edit-menu-btn').forEach(btn => {
+                    btn.addEventListener('click', () => editMenuItem(parseInt(btn.dataset.idx)));
+                });
+                document.querySelectorAll('.delete-menu-btn').forEach(btn => {
+                    btn.addEventListener('click', () => deleteMenuItem(parseInt(btn.dataset.idx)));
+                });
+            }
         }
 
         function showAddMenuModal() {
-            if (!currentUser || currentUser.role !== 'admin') { showToast("Hanya admin!", "#EF4444"); return; }
-            document.getElementById("menuModalTitle").textContent = "Tambah Menu";
+            if (!currentUser || currentUser.role !== 'admin') { 
+                showToast("Hanya admin yang bisa mengelola menu!", "#EF4444"); 
+                return; 
+            }
+            document.getElementById("menuModalTitle").textContent = "Tambah Menu Baru";
             document.getElementById("menuName").value = "";
             document.getElementById("menuPrice").value = "";
+            document.getElementById("menuNote").value = "";
             document.getElementById("saveMenuBtn").onclick = () => addMenuItem();
             document.getElementById("menuModal").style.display = "block";
         }
@@ -650,10 +731,13 @@
                 price: parseInt(document.getElementById("menuPrice").value),
                 stock: document.getElementById("menuStock").value === "true"
             };
-            if (!newItem.name || !newItem.price) { showToast("Lengkapi data!", "#EF4444"); return; }
+            if (!newItem.name || !newItem.price) { 
+                showToast("Nama dan harga harus diisi!", "#EF4444"); 
+                return; 
+            }
             menuData.push(newItem);
             saveData();
-            showToast("Menu ditambahkan!");
+            showToast(`"${newItem.name}" berhasil ditambahkan!`);
             closeModal("menuModal");
             loadMenuCMS();
             renderMenu();
@@ -661,6 +745,10 @@
         }
 
         function editMenuItem(index) {
+            if (!currentUser || currentUser.role !== 'admin') { 
+                showToast("Hanya admin!", "#EF4444"); 
+                return; 
+            }
             const item = menuData[index];
             document.getElementById("menuModalTitle").textContent = "Edit Menu";
             document.getElementById("menuName").value = item.name;
@@ -673,7 +761,7 @@
                 item.price = parseInt(document.getElementById("menuPrice").value);
                 item.stock = document.getElementById("menuStock").value === "true";
                 saveData();
-                showToast("Menu diupdate!");
+                showToast(`"${item.name}" berhasil diupdate!`);
                 closeModal("menuModal");
                 loadMenuCMS();
                 renderMenu();
@@ -683,20 +771,26 @@
         }
 
         function deleteMenuItem(index) {
-            if (confirm(`Hapus "${menuData[index].name}"?`)) {
+            if (!currentUser || currentUser.role !== 'admin') { 
+                showToast("Hanya admin!", "#EF4444"); 
+                return; 
+            }
+            const itemName = menuData[index].name;
+            if (confirm(`Yakin ingin menghapus "${itemName}"?`)) {
                 menuData.splice(index, 1);
                 saveData();
-                showToast("Menu dihapus!");
+                showToast(`"${itemName}" berhasil dihapus!`);
                 loadMenuCMS();
                 renderMenu();
                 renderMenuPreview();
             }
         }
 
-        // ==================== AUTH ====================
-        function showAuthModal() { document.getElementById("authModal").style.display = "block"; }
-        function closeAuthModal() { document.getElementById("authModal").style.display = "none"; }
-
+        // ==================== AUTHENTICATION ====================
+        function showAuthModal() { 
+            document.getElementById("authModal").style.display = "block"; 
+        }
+        
         function switchAuthMode() {
             authMode = authMode === "login" ? "register" : "login";
             document.getElementById("modalTitle").textContent = authMode === "login" ? "Login" : "Register";
@@ -705,9 +799,10 @@
         }
 
         function handleAuth() {
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+            
             if (authMode === "login") {
-                const username = document.getElementById("loginUsername").value;
-                const password = document.getElementById("loginPassword").value;
                 const user = users.find(u => u.username === username && u.password === password);
                 if (user) {
                     currentUser = user;
@@ -719,17 +814,21 @@
                     document.getElementById("profileMember").value = user.isMember ? "Member Aktif (Diskon 20%)" : "Non Member";
                     document.getElementById("profileDiscount").value = user.isMember ? "20%" : "0%";
                     showToast(`Selamat datang ${user.name}!`);
-                    closeAuthModal();
+                    closeModal("authModal");
                     document.getElementById("landingPage").classList.add("hide");
                     document.getElementById("appContainer").classList.add("active");
+                    
                     const adminNavs = document.querySelectorAll(".admin-only");
-                    adminNavs.forEach(nav => nav.style.display = user.role === "admin" ? "flex" : "none");
+                    adminNavs.forEach(nav => {
+                        if (user.role === "admin") nav.style.display = "flex";
+                        else nav.style.display = "none";
+                    });
+                    
+                    renderCart();
                 } else {
-                    showToast("Username/password salah!", "#EF4444");
+                    showToast("Username atau password salah!", "#EF4444");
                 }
             } else {
-                const username = document.getElementById("loginUsername").value;
-                const password = document.getElementById("loginPassword").value;
                 if (users.find(u => u.username === username)) {
                     showToast("Username sudah ada!", "#EF4444");
                 } else {
@@ -739,14 +838,17 @@
                     switchAuthMode();
                 }
             }
+            document.getElementById("loginUsername").value = "";
+            document.getElementById("loginPassword").value = "";
         }
 
         function logout() {
             currentUser = null;
-            document.getElementById("profileName").textContent = "Guest";
-            document.getElementById("profileRole").textContent = "Guest";
             cart = [];
             renderCart();
+            document.getElementById("profileName").textContent = "Guest";
+            document.getElementById("profileRole").textContent = "Guest";
+            document.getElementById("profileImg").src = "https://ui-avatars.com/api/?background=FF6B35&color=fff&name=Guest";
             document.getElementById("appContainer").classList.remove("active");
             document.getElementById("landingPage").classList.remove("hide");
             showToast("Logout berhasil!");
@@ -759,19 +861,26 @@
             document.getElementById(`${pageId}Page`).classList.add("active-page");
             document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
             document.querySelector(`[data-page="${pageId}"]`).classList.add("active");
+            
             if (pageId === "history") updateHistoryPage();
             if (pageId === "delivery") updateDeliveryPage();
             if (pageId === "queue") updateQueuePage();
             if (pageId === "tracking") updateTrackingPage();
             if (pageId === "admin") loadMenuCMS();
-        }
-
-        function scrollToSection(section) {
-            document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+            if (pageId === "profile" && currentUser) {
+                document.getElementById("profileFullname").value = currentUser.name;
+                document.getElementById("profileUsername").value = currentUser.username;
+                document.getElementById("profileMember").value = currentUser.isMember ? "Member Aktif (Diskon 20%)" : "Non Member";
+                document.getElementById("profileDiscount").value = currentUser.isMember ? "20%" : "0%";
+            }
         }
 
         // ==================== EVENT LISTENERS ====================
-        document.getElementById("searchInput")?.addEventListener("input", (e) => { searchQuery = e.target.value; renderMenu(); });
+        document.getElementById("searchInput")?.addEventListener("input", (e) => { 
+            searchQuery = e.target.value; 
+            renderMenu(); 
+        });
+        
         document.querySelectorAll(".cat-tab").forEach(tab => {
             tab.addEventListener("click", () => {
                 document.querySelectorAll(".cat-tab").forEach(t => t.classList.remove("active"));
@@ -780,19 +889,38 @@
                 renderMenu();
             });
         });
-        document.querySelectorAll(".nav-item").forEach(nav => nav.addEventListener("click", () => switchPage(nav.dataset.page)));
+        
+        document.querySelectorAll(".nav-item").forEach(nav => {
+            nav.addEventListener("click", () => switchPage(nav.dataset.page));
+        });
+        
         document.getElementById("profileBtn")?.addEventListener("click", () => {
-            if (currentUser) document.getElementById("logoutConfirmModal")?.style.display = "block";
+            if (currentUser) document.getElementById("logoutConfirmModal").style.display = "block";
             else showAuthModal();
         });
+        
         document.getElementById("confirmLogoutBtn")?.addEventListener("click", logout);
         document.getElementById("authSubmitBtn")?.addEventListener("click", handleAuth);
         document.getElementById("switchAuthMode")?.addEventListener("click", switchAuthMode);
+        document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
         document.getElementById("showAddMenuBtn")?.addEventListener("click", showAddMenuModal);
-        document.querySelectorAll(".close-modal").forEach(btn => btn.addEventListener("click", function() { this.closest(".modal").style.display = "none"; }));
-        window.addEventListener("click", (e) => { if (e.target.classList.contains("modal")) e.target.style.display = "none"; });
+        document.getElementById("refreshMenuBtn")?.addEventListener("click", loadMenuCMS);
+        document.getElementById("showDeliveryFormBtn")?.addEventListener("click", showDeliveryForm);
+        document.getElementById("submitDeliveryBtn")?.addEventListener("click", submitDelivery);
+        document.getElementById("showQueueFormBtn")?.addEventListener("click", showQueueForm);
+        document.getElementById("submitQueueBtn")?.addEventListener("click", submitQueue);
+        
+        window.addEventListener("click", (e) => {
+            if (e.target.classList.contains("modal")) e.target.style.display = "none";
+        });
+        
+        // EXPOSE GLOBAL FUNCTIONS
+        window.scrollToSection = scrollToSection;
+        window.showAuthModal = showAuthModal;
+        window.closeModal = closeModal;
+        window.updateTrackingStatus = updateTrackingStatus;
 
-        // ==================== INIT ====================
+        // ==================== INITIALIZE ====================
         renderMenuPreview();
         renderMenu();
         renderCart();
@@ -800,16 +928,7 @@
         updateDeliveryPage();
         updateQueuePage();
         updateTrackingPage();
-
-        window.editMenuItem = editMenuItem;
-        window.deleteMenuItem = deleteMenuItem;
-        window.loadMenuCMS = loadMenuCMS;
-        window.showDeliveryForm = showDeliveryForm;
-        window.showQueueForm = showQueueForm;
-        window.updateTrackingStatus = updateTrackingStatus;
-        window.scrollToSection = scrollToSection;
-        window.showAuthModal = showAuthModal;
-        window.closeModal = closeModal;
+        loadMenuCMS();
     </script>
 </body>
 </html>
